@@ -1,4 +1,6 @@
 <!doctype html>
+{% load staticfiles %}
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -9,7 +11,12 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300i,400,700" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="resourses/css/styleaddons.css">
     
-        <title>Base template</title>
+        <title>
+            West End Market - 
+            {% block title_block %}
+                West End Market Defult
+            {% endblock %}
+        </title>
     </head>
   
     <body>
@@ -59,41 +66,12 @@
             </nav>
         </div>
         
-        <!-- DUMMY TEXT CONTAINER -->
-        <!-- Will be replaced by other templates -->
-        <div class="container">
-            <h3>Welcome!</h3>
-            <h5>Recent Listings:</h5>
-            <hr>
-            <div class="row">
-                <div class="col-md-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                </div>
-                <div class="col-md-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                </div>
-                <div class="col-md-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                </div>
-                <div class="col-md-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                </div>
-                <div class="col-md-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                </div>
-                <div class="col-md-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                </div>
-                <div class="col-md-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                </div>
-            </div>
+        <div>
+            {% block body_block %}
+        
+            {% endblock %}
         </div>
+        
         
         <div class="navbar footer" style="background-color: #212121;">
             <!-- DUMMY FOOTER TEXT -->
