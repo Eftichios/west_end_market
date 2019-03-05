@@ -48,7 +48,7 @@ body { padding-bottom: 70px; }
 /* --------------------------------------------------- */
 .footer{
     color: #FFFFFF;
-    
+    margin-top: 10px;
 }
 
 /* --------------------------------------------------- */
@@ -71,15 +71,39 @@ body { padding-bottom: 70px; }
 }
 
 
+.margin-bottom-20 {
+    margin-bottom:20px;
+}
 
 
 
+.margin-top-bottom-10 {
+    margin: 10px 0px;
+}
 
+.padding-left-10 {
+    padding-left: 10px;
+}
 
+.height-100 {
+    height: 100px;
+}
 
+.height-200 {
+    height: 200px;
+}
 
+.text-box {
+    background-color:rgb(245, 245, 245);
+    border-radius: 20px;
+    padding: 10px 30px;
+}
 
+.width-100 {
+    width: 100px;
+}
 
-
-
-
+.helptext {
+    font-size: 14px;
+    color: rgb(200, 200, 200);
+}

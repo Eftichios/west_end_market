@@ -1,0 +1,44 @@
+{% extends 'west_end_market/base.html' %}
+{% load staticfiles %}
+        
+{% block body_block %}
+<div class="container">
+    <form>
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Item Name</h3>
+            </div>
+        </div>
+        <div class="row"> 
+            <div class="col-md-3">
+                <div class="margin-bottom-20 text-center">
+                    <img src="images/placeholder.jpg" alt="image of the item" width=200 height=200>
+                </div>
+            </div>    
+            <div class="text-box col-md-9">
+                <div class="row">
+                    <p>Description:</p>
+                </div>  
+                <div class="row">
+                    <p>Price:</p>
+                </div>
+                <div class="row">
+                    <p>Category:</p>
+                </div>
+                <div class="row">
+                    <p>Postcode:</p>
+                </div>  
+            </div>          
+        </div>    
+        <div class="row">
+            <div class="text-box col-md-12 margin-top-bottom-10">
+                <p>Comments:</p>
+            </div>
+        </div>    
+    </form>
+</div>   
+{% endblock %}
+        
+        
+        
+        
