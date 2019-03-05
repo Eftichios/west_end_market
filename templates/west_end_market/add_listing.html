@@ -1,0 +1,24 @@
+{% extends 'west_end_market/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Add a Listing
+{% endblock %}
+
+{% block body_block %}
+    <h1>Add a Listing</h1>
+    <div>
+    <form id="listing_form" method="post" action="/west_end_market/add_listing/">
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        {% for field in form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text }}
+            {{ field }}<br>
+        {% endfor %}
+        <input type="submit" name="submit" value="Create Listing" />
+    </form>
+    </div>
+{% endblock %}

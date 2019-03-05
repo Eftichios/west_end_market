@@ -4,6 +4,7 @@ from django.utils import timezone
 
 
 class UserProfile(models.Model):
+
     user = models.OneToOneField(User)
 
     def __str__(self):
@@ -27,6 +28,8 @@ class Listing(models.Model):
     price = models.IntegerField(default=0)
     category = models.ForeignKey(Category)
     user = models.ForeignKey(User)
+    date = models.DateTimeField(default=timezone.now)
+    picture = models.ImageField(null=True)
     postcode = models.CharField(max_length=10)
 
     def __str__(self):
@@ -36,7 +39,7 @@ class Listing(models.Model):
 class Comment(models.Model):
     comment = models.CharField(max_length=200)
     user = models.ForeignKey(User)
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
     listing = models.ForeignKey(Listing)
 
     def __str__(self):

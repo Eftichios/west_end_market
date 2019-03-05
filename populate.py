@@ -1,5 +1,5 @@
 import os
-
+from django.utils import timezone
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'teamC_project.settings')
 
@@ -25,6 +25,8 @@ def populate():
                      "price": 50,
                      "category": "school",
                      "user": "John Pope",
+                     "date": timezone.now(),
+                     "picture": "dog.jpg",
                      "postcode": "PCSCH1"},
 
                     {"id": "s2",
@@ -33,6 +35,8 @@ def populate():
                      "price": 70,
                      "category": "school",
                      "user": "Christopher Smith",
+                     "date": timezone.now(),
+                     "picture": "dog.jpg",
                      "postcode": "PCSCH2"},
 
                     {"id": "s3",
@@ -41,6 +45,8 @@ def populate():
                      "price": 20,
                      "category": "school",
                      "user": "Peter Brown",
+                     "date": timezone.now(),
+                     "picture": "dog.jpg",
                      "postcode": "PCSCH3"}]
 
     electronics = [{"id": "e1",
@@ -49,6 +55,8 @@ def populate():
                      "price": 20,
                      "category": "electronics",
                      "user": "James",
+                    "date": timezone.now(),
+                    "picture": "dog.jpg",
                      "postcode": "PCELE1"},
 
                     {"id": "e2",
@@ -57,6 +65,8 @@ def populate():
                      "price": 115,
                      "category": "electronics",
                      "user": "Veronica",
+                     "date": timezone.now(),
+                     "picture": "dog.jpg",
                      "postcode": "PCELE1"},
 
                     {"id": "e3",
@@ -65,6 +75,8 @@ def populate():
                      "price": 580,
                      "category": "electronics",
                      "user": "Maria",
+                     "date": timezone.now(),
+                     "picture": "dog.jpg",
                      "postcode": "PCELE1"}]
 
     cats = {"school": {"listings": school, "total": len(school)},
@@ -73,15 +85,15 @@ def populate():
     comments = {"s1": [{"comment": "Nice item!", "user": "Maria"}, {"comment": "Looking good", "user": "John Pope"}],
                 "s2": [{"comment": "Hello", "user": "Veronica"}, {"comment": "How are you?", "user": "Peter Brown"}]}
 
-    for user,user_data in users.items():
+    for user, user_data in users.items():
         u = User.objects.get_or_create(username=user_data["username"])[0]
         u.save()
 
     for cat, cat_data in cats.items():
         c = add_category(cat, cat_data["total"])
         for l in cat_data["listings"]:
-            u = User.objects.get(username = l["user"])
-            a = add_listing(l["title"], l["description"], l["price"], c, u, l["postcode"])
+            u = User.objects.get(username=l["user"])
+            a = add_listing(l["title"], l["description"], l["price"], c, u, l["date"], l["picture"], l["postcode"])
             if l["id"] in comments:
                 for com in comments[l["id"]]:
                     u = User.objects.get(username=com["user"])
@@ -98,8 +110,8 @@ def add_category(name, listings):
     return c
 
 
-def add_listing(title, description, price, category, user, postcode):
-    l = Listing.objects.get_or_create(title=title, description=description, price=price, category=category, user=user, postcode=postcode)[0]
+def add_listing(title, description, price, category, user, date, picture, postcode):
+    l = Listing.objects.get_or_create(title=title, description=description, price=price, category=category, user=user, date=date, picture=picture, postcode=postcode)[0]
     l.save()
     return l
 
@@ -108,6 +120,7 @@ def add_comment(comment, user, listing):
     co = Comment.objects.get_or_create(comment=comment ,user=user, listing=listing)[0]
     co.save()
     return co
+
 
 if __name__ == '__main__':
     print("Starting west_end_market population script...")
