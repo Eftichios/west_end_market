@@ -1,40 +1,46 @@
 {% extends 'west_end_market/base.html' %}
 {% load staticfiles %}
 
+<title>
+    West End Market - 
+        {% block title_block %}
+            West End Market Defult
+        {% endblock %}
+</title>
+
 {% block body_block %}
-        <!-- DUMMY TEXT CONTAINER -->
-        <!-- Will be replaced by other templates -->
-        <div class="container">
-            <h3>Welcome!</h3>
-            <h5>Recent Listings:</h5>
-            <hr>
-            <div class="row">
-                <div class="col-md-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                </div>
-                <div class="col-md-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                </div>
-                <div class="col-md-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                </div>
-                <div class="col-md-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                </div>
+
+<div class="container margin-top-30">
+    <h2>Welcome!</h2>
+    <h5>Recent Listings:</h5>
+    <hr>
+    <div class="row">
+        <div class="col-md-3">
+            <img src="resourses\img\square300.jpg" class="img-fluid item-box-mobile" alt="square image">
+        </div>
+        <div class="col-md-3">
+            <img src="resourses\img\square300.jpg" class="img-fluid item-box-mobile" alt="square image">
+        </div>
+        <div class="col-md-3">
+            <img src="resourses\img\square300.jpg" class="img-fluid item-box-mobile" alt="square image">
+        </div>
+        <div class="col-md-3">
+            <img src="resourses\img\square300.jpg" class="img-fluid item-box-mobile" alt="square image">
+        </div>
+    </div>
+        <div class="row margin-top-30">
+            <div class="col-md-3">
+              <img src="resourses\img\square300.jpg" class="img-fluid item-box-mobile" alt="square image">
             </div>
-            <div class="row">
-                <div class="col-md-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                </div>
-                <div class="col-md-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                </div>
-                <div class="col-md-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                </div>
-                <div class="col-md-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                </div>
+            <div class="col-md-3">
+              <img src="resourses\img\square300.jpg" class="img-fluid item-box-mobile" alt="square image">
+            </div>
+            <div class="col-md-3">
+              <img src="resourses\img\square300.jpg" class="img-fluid item-box-mobile" alt="square image">
+            </div>
+            <div class="col-md-3">
+              <img src="resourses\img\square300.jpg" class="img-fluid item-box-mobile" alt="square image">
             </div>
         </div>
+</div>
 {% endblock %}

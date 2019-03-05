@@ -1,0 +1,57 @@
+{% extends 'west_end_market/base.html' %}
+{% load staticfiles %}
+
+        <title>
+            West End Market - 
+            {% block title_block %}
+                West End Market Defult
+            {% endblock %}
+        </title>
+
+{% block body_block %}
+        <div>
+            <div class="container">
+                <h3 class="text-center margin-top-30">Login</h3>
+            </div>
+            <div class="container">
+                <div class="row margin-top-30">
+                    <div class="col-md-5">
+                        <form>
+                            <div class="form-group">
+                              <label>Email Address</label>
+                              <input type="email" class="form-control" placeholder="youremail@goeshere.com">
+                            </div>
+
+                            <div class="form-group">
+                              <label>Password</label>
+                              <input type="email" class="form-control" placeholder="Password">
+                            </div>
+                            <div>
+                            <label>
+                                <input type="checkbox"> Remember me
+                            </label>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary block-button">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-2">
+                      <p></p>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="margin-top-30">
+                            <button class="btn btn-primary desktop-block-button">Login with Facebook</button>
+                        </div>
+                        <div class="margin-top-30">
+                            <button class="btn btn-danger desktop-block-button">Login with Google</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="margin-top-30">
+                <h5 class="text-center">If you do not have an account, <a href="#">click here</a> to register</h5>
+                
+                </div>
+            </div>
+        </div>
+{% endblock %}
