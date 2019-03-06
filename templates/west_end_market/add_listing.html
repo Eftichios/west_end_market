@@ -15,7 +15,7 @@
                         
                 <div class="form-group text-center font-weight-bold ">
                     <label>Upload Image</label>
-                    <input id="id_picture" type="file" name="picture" onchange="readURL(this);">
+                    <input required id="id_picture" type="file" name="picture" onchange="readURL(this);">
                     <br>
                     <p class="text-left helptext">Only png and jpg allowed</p>
                 </div>
@@ -24,16 +24,16 @@
             <div class="col-md-8">
                 <div class="form-group font-weight-bold">
                     <label>Title of item:</label>
-                    <input id="id_title" type="text" class="form-control font-italic" placeholder="Add Title (i.e bicycle)" name="title">
+                    <input required id="id_title" type="text" class="form-control font-italic" placeholder="Add Title (i.e bicycle)" name="title">
                 </div>
                 <div class="form-group font-weight-bold">
                     <label>Price:</label>
-                    <input id="id_price" type="text" class="form-control font-italic" placeholder="Add Price" name="price">
+                    <input required id="id_price" type="text" class="form-control font-italic" placeholder="Add Price" name="price">
                 </div>
                 <div class="form-group font-weight-bold">
                     <label>Category:</label>
 
-                    <select id="id_category" class="form-control text-uppercase" name="category">
+                    <select required id="id_category" class="form-control text-uppercase" name="category">
                         {{form.category.1}}
                         {{form.category.2}}
                         <!--<option value="school">School</option>-->
@@ -46,11 +46,11 @@
                 </div>
                 <div class="form-group font-weight-bold">
                     <label>Postcode:</label>
-                    <input id="id_postcode" type="text" class="form-control font-italic" placeholder="Add Postcode (i.e G11 6QH)" name="postcode">
+                    <input required id="id_postcode" type="text" class="form-control font-italic" placeholder="Add Postcode (i.e G11 6QH)" name="postcode">
                 </div>
                 <div class="form-group font-weight-bold">
                     <label>Description:</label>
-                    <textarea id="id_description" class="form-control font-italic" placeholder="Add description" name="description"></textarea>
+                    <textarea required id="id_description" class="form-control font-italic" placeholder="Add description" name="description"></textarea>
                 </div>
                         
                 <div class="text-right">
