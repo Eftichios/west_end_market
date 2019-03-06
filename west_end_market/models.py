@@ -24,12 +24,12 @@ class Category(models.Model):
 
 class Listing(models.Model):
     title = models.CharField(max_length=100)
-    description = models.CharField(max_length=250)
+    description = models.CharField(max_length=250, blank=True)
     price = models.IntegerField(default=0)
     category = models.ForeignKey(Category)
     user = models.ForeignKey(User)
     date = models.DateTimeField(default=timezone.now)
-    picture = models.ImageField(null=True)
+    picture = models.ImageField(upload_to='photos/')
     postcode = models.CharField(max_length=10)
 
     def __str__(self):
@@ -44,3 +44,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
+
+# def user_directory_path(instance,filename):
+#     return 'user_{0}/{1}'.format(instance.user.username,filename)
