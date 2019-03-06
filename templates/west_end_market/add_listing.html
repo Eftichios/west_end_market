@@ -13,7 +13,7 @@
                     <img id="id_placeholder" class="img-thumbnail"  src="{% static 'images/placeholder.jpg' %}" alt="image of the item" width=200 height=200>
                 </div>
                         
-                <div class="text-center form-group">
+                <div class="form-group text-center font-weight-bold ">
                     <label>Upload Image</label>
                     <input id="id_picture" type="file" name="picture" onchange="readURL(this);">
                     <br>
@@ -22,18 +22,18 @@
             </div>
                     
             <div class="col-md-8">
-                <div class="form-group">
+                <div class="form-group font-weight-bold">
                     <label>Title of item:</label>
-                    <input id="id_title" type="text" class="form-control" placeholder="Add Title (i.e bicycle)" name="title">
+                    <input id="id_title" type="text" class="form-control font-italic" placeholder="Add Title (i.e bicycle)" name="title">
                 </div>
-                <div class="form-group">
+                <div class="form-group font-weight-bold">
                     <label>Price:</label>
-                    <input id="id_price" type="text" class="form-control" placeholder="Add Price" name="price">
+                    <input id="id_price" type="text" class="form-control font-italic" placeholder="Add Price" name="price">
                 </div>
-                <div class="form-group">
+                <div class="form-group font-weight-bold">
                     <label>Category:</label>
 
-                    <select id="id_category" class="form-control" name="category">
+                    <select id="id_category" class="form-control text-uppercase" name="category">
                         {{form.category.1}}
                         {{form.category.2}}
                         <!--<option value="school">School</option>-->
@@ -44,17 +44,18 @@
                         <!--<option value="other">Other</option>-->
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group font-weight-bold">
                     <label>Postcode:</label>
-                    <input id="id_postcode" type="text" class="form-control" placeholder="Add Postcode (i.e G11 6QH)" name="postcode">
+                    <input id="id_postcode" type="text" class="form-control font-italic" placeholder="Add Postcode (i.e G11 6QH)" name="postcode">
                 </div>
-                <div class="form-group">
+                <div class="form-group font-weight-bold">
                     <label>Description:</label>
-                    <textarea id="id_description" class="form-control" placeholder="Add description" name="description"></textarea>
+                    <textarea id="id_description" class="form-control font-italic" placeholder="Add description" name="description"></textarea>
                 </div>
                         
                 <div class="text-right">
-                    <button class="btn btn-primary" type="submit" value="submit" >Submit</button>
+                    <button class="btn btn-outline-primary" type="submit" value="submit" >Create</button>
+                    <button class="btn btn-outline-secondary" type="submit" value="submit" disabled>Update</button>
                 </div>
             </div>
         </div>       
