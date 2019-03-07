@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block body_block %}
-<div class="container">
+<div class="container margin-top-30">
     <form id="listing_form" method = 'post' enctype="multipart/form-data" action="{% url 'add_listing' %}">
         {% csrf_token %}
         <div class="row">
@@ -33,7 +33,7 @@
                 <div class="form-group font-weight-bold">
                     <label>Category:</label>
 
-                    <select required id="id_category" class="form-control text-uppercase" name="category">
+                    <select required id="id_category" class="form-control text-capitalize" name="category">
                         {{form.category.1}}
                         {{form.category.2}}
                         <!--<option value="school">School</option>-->
