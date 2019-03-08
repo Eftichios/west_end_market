@@ -15,32 +15,68 @@
     <h5>Recent Listings:</h5>
     <hr>
     <div class="row">
-        <div class="col-md-3">
-            <img src="{% static 'images\square300.jpg' %}" class="img-fluid item-box-mobile" alt="square image">
+        <div class="col-md-3 text-center font-weight-bold">
+            <label>{{listings.0.title}}</label>
+            <img src="{{listings.0.picture.url}}" class="img-fluid item-box-mobile" alt="square image" width=300px height=300px>
         </div>
-        <div class="col-md-3">
-            <img src="{% static 'images\square300.jpg' %}" class="img-fluid item-box-mobile" alt="square image">
+        <div class="col-md-3 text-center font-weight-bold">
+            {% if listings.1.title|length > 25%}
+                <label>{{listings.1.title|slice:"0:25"}}...</label>
+            {% else %}
+                <label>{{listings.1.title}}</label>
+            {% endif %}
+            <img src="{{listings.1.picture.url}}" class="img-fluid item-box-mobile" alt="square image" width=300px height=300px>
         </div>
-        <div class="col-md-3">
-            <img src="{% static 'images\square300.jpg' %}" class="img-fluid item-box-mobile" alt="square image">
+        <div class="col-md-3 text-center font-weight-bold">
+            {% if listings.2.title|length > 25%}
+                <label>{{listings.2.title|slice:"0:25"}}...</label>
+            {% else %}
+                <label>{{listings.2.title}}</label>
+            {% endif %}
+            <img src="{{listings.2.picture.url}}" class="img-fluid item-box-mobile" alt="square image" width=300px height=300px>
         </div>
-        <div class="col-md-3">
-            <img src="{% static 'images\square300.jpg' %}" class="img-fluid item-box-mobile" alt="square image">
+        <div class="col-md-3 text-center font-weight-bold">
+            {% if listings.3.title|length > 25%}
+                <label>{{listings.3.title|slice:"0:25"}}...</label>
+            {% else %}
+                <label>{{listings.3.title}}</label>
+            {% endif %}
+            <img src="{{listings.3.picture.url}}" class="img-fluid item-box-mobile" alt="square image" width=300px height=300px>
         </div>
     </div>
-        <div class="row margin-top-30">
-            <div class="col-md-3">
-              <img src="{% static 'images\square300.jpg' %}" class="img-fluid item-box-mobile" alt="square image">
-            </div>
-            <div class="col-md-3">
-              <img src="{% static 'images\square300.jpg' %}" class="img-fluid item-box-mobile" alt="square image">
-            </div>
-            <div class="col-md-3">
-              <img src="{% static 'images\square300.jpg' %}" class="img-fluid item-box-mobile" alt="square image">
-            </div>
-            <div class="col-md-3">
-              <img src="{% static 'images\square300.jpg' %}" class="img-fluid item-box-mobile" alt="square image">
-            </div>
+    <div class="row margin-top-30">
+        <div class="col-md-3 text-center font-weight-bold">
+            {% if listings.4.title|length > 25%}
+                <label>{{listings.4.title|slice:"0:25"}}...</label>
+            {% else %}
+                <label>{{listings.4.title}}</label>
+            {% endif %}
+            <img src="{{listings.4.picture.url}}" class="img-fluid item-box-mobile" alt="square image" width=300px height=300px>
         </div>
+        <div class="col-md-3 text-center font-weight-bold">
+            {% if listings.5.title|length > 25%}
+                <label>{{listings.5.title|slice:"0:25"}}...</label>
+            {% else %}
+                <label>{{listings.5.title}}</label>
+            {% endif %}
+            <img src="{{listings.5.picture.url}}" class="img-fluid item-box-mobile" alt="square image" width=300px height=300px>
+        </div>
+        <div class="col-md-3 text-center font-weight-bold">
+            {% if listings.6.title|length > 25%}
+                <label>{{listings.6.title|slice:"0:25"}}...</label>
+            {% else %}
+                <label>{{listings.6.title}}</label>
+            {% endif %}
+            <img src="{{listings.6.picture.url}}" class="img-fluid item-box-mobile" alt="square image" width=300px height=300px>
+        </div>
+        <div class="col-md-3 text-center font-weight-bold">
+            {% if listings.6.title|length > 25%}
+                <label>{{listings.6.title|slice:"0:25"}}...</label>
+            {% else %}
+                <label>{{listings.6.title}}</label>
+            {% endif %}
+            <img src="{{listings.6.picture.url}}" class="img-fluid item-box-mobile" alt="square image" width=300px height=300px>
+        </div>
+    </div>
 </div>
 {% endblock %}
