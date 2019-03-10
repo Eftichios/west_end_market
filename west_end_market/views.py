@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from west_end_market.models import Listing
 from west_end_market.models import Category as C, Listing as L, User as U
-from west_end_market.forms import ListingForm
+from west_end_market.forms import ListingForm, UserForm, UserProfileForm
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 
@@ -35,7 +35,6 @@ def add_listing(request):
     return render(request, 'west_end_market/add_listing.html', {'form': form})
 
 
-
 def register(request):
     registered = False
     if request.method == 'POST':
@@ -48,9 +47,6 @@ def register(request):
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
-
-            if 'picture' in request.FILES:
-                profile.picture = request.FILES['picture']
             profile.save()
             registered = True
         else:
@@ -59,11 +55,7 @@ def register(request):
         user_form = UserForm()
         profile_form = UserProfileForm()
 
-
-
-
     return render(request, 'west_end_market/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
-
 
 
 def user_login(request):
@@ -71,7 +63,7 @@ def user_login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
-        
+
         if user:
             if user.is_active:
                 login(request, user)
@@ -80,8 +72,10 @@ def user_login(request):
                 return HttpResponse("Your West End Market account is disabled.")
         else:
             print("Invalid login details: {0}, {1}".format(username, password))
+            return HttpResponse("Invalid login details supplied.")
+
     else:
-        return(request,'west_end_market/loginpage.html', {})
+        return render(request, 'west_end_market/loginpage.html', {})
 
 
 

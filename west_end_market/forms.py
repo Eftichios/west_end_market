@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from west_end_market.models import Listing, Category
+from west_end_market.models import Listing, Category, UserProfile
 from django.utils import timezone
 
 
@@ -35,3 +35,7 @@ class UserForm(forms.ModelForm):
         fields = ('username', 'email', 'password')
 
 
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('picture',)
