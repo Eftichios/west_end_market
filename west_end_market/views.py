@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from west_end_market.models import Listing
+from west_end_market.models import User
+from west_end_market.models import Category
 from west_end_market.models import Category as C, Listing as L, User as U
 from west_end_market.forms import ListingForm, UserForm, UserProfileForm
 from django.contrib.auth.decorators import login_required
@@ -85,16 +87,17 @@ def user_logout(request):
     return HttpResponseRedirect(reverse('index'))
 
 
+# NOTE: When my listings is taken out of comments
+# we get 'block' tag with name 'title_block' appears more than once error
 
 """
-@login_required
 def my_listings(request):
     return render(request, 'west_end_market/mylistings.html', {})
 """
 
 
 """
-def show_listing(request, listing_id):
+def show_listing(request):
     context_dict = {}
     try:
         listing = Listing.objects.get(listing_id=listing_id)
@@ -107,6 +110,15 @@ def show_listing(request, listing_id):
     return render(request,'rango/listing.html', context_dict)
 """
 
+def user_profile(request, username):
+    context_dict = {}
+    try:
+        user = User.objects.get(username=username)
+        listings = Listing.objects.filter(user=user)
+        context_dict['listings'] = listings
+        context_dict['user'] = user   
+    except User.DoesNotExist:
+        context_dict['user'] = None
+        context_dict['listings'] = None
+    return render(request, 'west_end_market/user_profile.html', context_dict)
 
-def user_profile(request):
-    return render(request, 'west_end_market/user_profile.html', {})
