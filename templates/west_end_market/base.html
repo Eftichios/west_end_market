@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'vendors/css/palette.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Lato:300i,400,700" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{% static 'resourses/css/styleaddons.css' %}">
-        <link rel="shortcut icon" href="{% static 'images/karotsi.ico' %}"/>
+        <link rel="shortcut icon" href="{% static 'images/logo-title.ico' %}"/>
         
         <title>
             West End Market - 
@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">All Listings</a>
@@ -58,10 +58,12 @@
                     </form>
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <button type="button" class="btn btn-primary margin-right-20 block-button">Login</button>
+<!--                            <button type="button" class="btn btn-primary margin-right-20 block-button">Login</button>-->
+                            <a href="{% url 'login' %}" class="btn btn-primary margin-right-20 block-button">Login</a>
                         </li>
                         <li class="nav-item">
-                            <button type="button" class="btn btn-danger margin-right-20 block-button">Sign up</button>
+<!--                            <button type="button" class="btn btn-danger margin-right-20 block-button">Sign up</button>-->
+                            <a href="{% url 'register' %}" class="btn btn-danger margin-right-20 block-button">Sign up</a>
                         </li>
                     </ul>
                 </div>
