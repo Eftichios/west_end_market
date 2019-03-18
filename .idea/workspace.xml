@@ -9,22 +9,12 @@
       <change beforePath="$PROJECT_DIR$/../tango_with_django_project/tango_with_django_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../tango_with_django_project/tango_with_django_project/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tango_with_django_project/templates/rango/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/../tango_with_django_project/templates/rango/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/populate.py" beforeDir="false" afterPath="$PROJECT_DIR$/populate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/west_end_market/add_listing.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/west_end_market/add_listing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/west_end_market/listing.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/west_end_market/listing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/west_end_market/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/west_end_market/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/west_end_market/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/west_end_market/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/west_end_market/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/west_end_market/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/west_end_market/migrations/0002_auto_20190302_2010.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/west_end_market/migrations/0003_auto_20190302_2012.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/west_end_market/migrations/0004_auto_20190302_2013.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/west_end_market/migrations/0005_auto_20190302_2021.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/west_end_market/migrations/0006_auto_20190304_2336.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/west_end_market/migrations/0007_auto_20190306_0416.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/west_end_market/migrations/0008_userprofile_picture.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/karotsi.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/karotsi2.ico" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/logo-title.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/west_end_market/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/west_end_market/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/west_end_market/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/west_end_market/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/west_end_market/loginpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/west_end_market/loginpage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/west_end_market/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/west_end_market/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/west_end_market/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/west_end_market/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/west_end_market/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/west_end_market/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/west_end_market/register.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+            <state relative-caret-position="-267">
+              <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -56,11 +46,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/west_end_market/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+            <state relative-caret-position="274">
+              <caret line="123" column="8" lean-forward="true" selection-start-line="123" selection-start-column="8" selection-end-line="123" selection-end-column="8" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/west_end_market/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="35" column="11" lean-forward="true" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/west_end_market/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-729">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/west_end_market/loginpage.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-287">
+              <caret line="13" column="35" lean-forward="true" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -74,23 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/west_end_market/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/west_end_market/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="33" column="53" lean-forward="true" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
+            <state relative-caret-position="272">
+              <caret line="31" column="42" lean-forward="true" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -136,7 +141,6 @@
         <option value="$PROJECT_DIR$/west_end_market/admin.py" />
         <option value="$PROJECT_DIR$/teamC_project/urls.py" />
         <option value="$PROJECT_DIR$/templates/add_listing.html" />
-        <option value="$PROJECT_DIR$/templates/west_end_market/base.html" />
         <option value="$PROJECT_DIR$/teamC_project/settings.py" />
         <option value="$PROJECT_DIR$/templates/west_end_market/index.html" />
         <option value="$PROJECT_DIR$/templates/west_end_market/loginpage.html" />
@@ -149,15 +153,16 @@
         <option value="$PROJECT_DIR$/../tango_with_django_project/rango/urls.py" />
         <option value="$PROJECT_DIR$/../tango_with_django_project/rango/views.py" />
         <option value="$PROJECT_DIR$/../tango_with_django_project/tango_with_django_project/urls.py" />
-        <option value="$PROJECT_DIR$/west_end_market/models.py" />
         <option value="$PROJECT_DIR$/populate.py" />
         <option value="$PROJECT_DIR$/templates/west_end_market/add_comment.html" />
         <option value="$PROJECT_DIR$/west_end_market/forms.py" />
         <option value="$PROJECT_DIR$/west_end_market/urls.py" />
         <option value="$PROJECT_DIR$/templates/west_end_market/listing.html" />
         <option value="$PROJECT_DIR$/templates/west_end_market/add_listing.html" />
-        <option value="$PROJECT_DIR$/west_end_market/views.py" />
         <option value="$PROJECT_DIR$/templates/west_end_market/register.html" />
+        <option value="$PROJECT_DIR$/west_end_market/views.py" />
+        <option value="$PROJECT_DIR$/templates/west_end_market/base.html" />
+        <option value="$PROJECT_DIR$/west_end_market/models.py" />
       </list>
     </option>
   </component>
@@ -351,13 +356,6 @@
     <entry file="file://$PROJECT_DIR$/static/images/check.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/west_end_market/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="76" column="70" selection-start-line="76" selection-start-column="70" selection-end-line="76" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/teamC_project/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -365,13 +363,6 @@
           <folding>
             <element signature="e#647#679#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/west_end_market/loginpage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="35" lean-forward="true" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -481,13 +472,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/west_end_market/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/west_end_market/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -519,16 +503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/west_end_market/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="33" column="53" lean-forward="true" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../tango_with_django_project/templates/rango/login.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -536,23 +510,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1768">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/west_end_market/listing.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="49" column="158" selection-start-line="49" selection-start-column="158" selection-end-line="49" selection-end-column="158" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/west_end_market/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -573,10 +530,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/west_end_market/listing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="49" column="158" selection-start-line="49" selection-start-column="158" selection-end-line="49" selection-end-column="158" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/west_end_market/loginpage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-287">
+          <caret line="13" column="35" lean-forward="true" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/west_end_market/register.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+        <state relative-caret-position="-267">
+          <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/west_end_market/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="35" column="11" lean-forward="true" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/west_end_market/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-729">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/west_end_market/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="123" column="8" lean-forward="true" selection-start-line="123" selection-start-column="8" selection-end-line="123" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/west_end_market/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="31" column="42" lean-forward="true" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

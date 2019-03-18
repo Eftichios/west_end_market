@@ -25,7 +25,7 @@ class Category(models.Model):
 
 
 class Listing(models.Model):
-    id = models.CharField(primary_key=True,max_length=10)
+    id = models.CharField(primary_key=True, max_length=10)
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=250, blank=True)
     price = models.IntegerField(default=0)

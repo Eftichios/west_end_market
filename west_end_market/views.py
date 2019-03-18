@@ -21,7 +21,7 @@ def add_listing(request):
         if form.is_valid():
             listing = form.save(commit=False)
             listing.picture = form.cleaned_data['picture']
-            listing.user = User.objects.get(username='Maria')
+            listing.user = User.objects.get(username=request.user)
             setattr(listing.category, 'listings', listing.category.listings+1)
             listing.id = listing.category[0:1] + str(listing.category.listings)
             listing.category.save()
