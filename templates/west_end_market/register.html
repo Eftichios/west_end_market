@@ -14,14 +14,14 @@
     <form id="listing_form" method = 'post' enctype="multipart/form-data" action="{% url 'register' %}">
         {% csrf_token %}
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 text-center">
                 <h3>User Registration</h3>
                 <div class="text-center">
                     <img id="id_placeholder" class="img-thumbnail"  src="{% static 'images/placeholder.jpg' %}" alt="image of the item" width=200 height=200>
                 </div>
                         
                 <div class="form-group text-center font-weight-bold ">
-                    <label>Upload Image:</label>
+                    <label>Upload Image</label>
                     <input id="id_picture" type="file" name="picture" onchange="readURL(this);">
                     <br>
                 </div>
@@ -33,21 +33,21 @@
                 {{profile_form.errors}}
             </div>
                 <div class="form-group font-weight-bold">
-                    <label>Username:</label>
+                    <label>Username</label>
                     <input required id="id_username" type="username" class="form-control font-italic" placeholder="i.e John Mathew" name="username">
-                    <p class="text-left helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
+                    <p class="text-left helptext">Required. 25 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
                 </div>
                 <div class="form-group font-weight-bold">
-                    <label>Email address:</label>
+                    <label>Email address</label>
                     <input required id="id_email" type="email" class="form-control font-italic" placeholder="myusername@gmail.com" name="email">
                 </div>
                 <div class="form-group font-weight-bold">
-                    <label>Password:</label>
+                    <label>Password</label>
                     <input required id="id_password" type="password" class="form-control font-italic" placeholder="Password" name="password">
                 </div>
                         
                 <div class="text-right">
-                    <button class="btn btn-outline-primary" type="submit" value="submit" >Register</button>
+                    <button class="btn btn-primary block-button" type="submit" value="submit" >Register</button>
                 </div>
             </div>
         </div>       
