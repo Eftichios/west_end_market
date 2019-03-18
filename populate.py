@@ -29,7 +29,7 @@ def populate():
                      "picture": "dog.jpg",
                      "postcode": "PCSCH1"},
 
-                    {"id": "s2",
+              {"id": "s2",
                      "title": "Introduction to Calculus",
                      "description": "Brand new book",
                      "price": 70,
@@ -39,7 +39,7 @@ def populate():
                      "picture": "dog.jpg",
                      "postcode": "PCSCH2"},
 
-                    {"id": "s3",
+              {"id": "s3",
                      "title": "How to tango with django",
                      "description": "Brand new book",
                      "price": 20,
@@ -50,14 +50,14 @@ def populate():
                      "postcode": "PCSCH3"}]
 
     electronics = [{"id": "e1",
-                     "title": "Brand new anker bluetooth earphones ",
-                     "description": "Anker Bluetooth Headphones, SoundBuds Slim Lightweight Wireless Headphones, IPX5 Sweatproof Sports Headphones with Mic and 7 Hrs Play Time for Running, Cycling, Gym, Travelling and More",
-                     "price": 20,
-                     "category": "electronics",
-                     "user": "James",
-                    "date": timezone.now(),
-                    "picture": "dog.jpg",
-                     "postcode": "PCELE1"},
+                          "title": "Brand new anker bluetooth earphones ",
+                          "description": "Anker Bluetooth Headphones, SoundBuds Slim Lightweight Wireless Headphones, IPX5 Sweatproof Sports Headphones with Mic and 7 Hrs Play Time for Running, Cycling, Gym, Travelling and More",
+                          "price": 20,
+                          "category": "electronics",
+                          "user": "James",
+                          "date": timezone.now(),
+                          "picture": "dog.jpg",
+                          "postcode": "PCELE1"},
 
                     {"id": "e2",
                      "title": "Used Xiaomi MI A1, in very good contition!",
@@ -93,7 +93,7 @@ def populate():
         c = add_category(cat, cat_data["total"])
         for l in cat_data["listings"]:
             u = User.objects.get(username=l["user"])
-            a = add_listing(l["title"], l["description"], l["price"], c, u, l["date"], l["picture"], l["postcode"])
+            a = add_listing(l["id"], l["title"], l["description"], l["price"], c, u, l["date"], l["picture"], l["postcode"])
             if l["id"] in comments:
                 for com in comments[l["id"]]:
                     u = User.objects.get(username=com["user"])
@@ -110,14 +110,14 @@ def add_category(name, listings):
     return c
 
 
-def add_listing(title, description, price, category, user, date, picture, postcode):
-    l = Listing.objects.get_or_create(title=title, description=description, price=price, category=category, user=user, date=date, picture=picture, postcode=postcode)[0]
+def add_listing(id, title, description, price, category, user, date, picture, postcode):
+    l = Listing.objects.get_or_create(id=id, title=title, description=description, price=price, category=category, user=user, date=date, picture=picture, postcode=postcode)[0]
     l.save()
     return l
 
 
 def add_comment(comment, user, listing):
-    co = Comment.objects.get_or_create(comment=comment ,user=user, listing=listing)[0]
+    co = Comment.objects.get_or_create(comment=comment,user=user, listing=listing)[0]
     co.save()
     return co
 

@@ -7,39 +7,55 @@
         
 {% block body_block %}
 <div class="container">
-    <form>
-        <div class="row">
-            <div class="col-md-12">
-                <h3>Item Name</h3>
+        {% if listing %}
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>{{listing.title}}</h3>
+                </div>
             </div>
-        </div>
-        <div class="row"> 
-            <div class="col-md-3">
-                <div class="margin-bottom-20 text-center">
-                    <img src="images/placeholder.jpg" alt="image of the item" width=200 height=200>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="margin-bottom-20 text-center">
+                        <img src="{{listing.picture.url}}" alt="image of the item" width=200 height=200>
+                    </div>
                 </div>
-            </div>    
-            <div class="text-box col-md-9">
-                <div class="row">
-                    <p>Description:</p>
-                </div>  
-                <div class="row">
-                    <p>Price:</p>
+                <div class="text-box col-md-9">
+                    <div class="row">
+                        <p>Description: {{listing.description}}</p>
+                    </div>
+                    <div class="row">
+                        <p>Price: £{{listing.price}}</p>
+                    </div>
+                    <div class="row">
+                        <p>Category: {{listing.category}}</p>
+                    </div>
+                    <div class="row">
+                        <p>Postcode: {{listing.postcode}}</p>
+                    </div>
                 </div>
-                <div class="row">
-                    <p>Category:</p>
-                </div>
-                <div class="row">
-                    <p>Postcode:</p>
-                </div>  
-            </div>          
-        </div>    
-        <div class="row">
-            <div class="text-box col-md-12 margin-top-bottom-10">
-                <p>Comments:</p>
             </div>
-        </div>    
-    </form>
+            <div class="row">
+                <div class="text-box col-md-12 margin-top-bottom-10">
+                    <p>Comments:</p>
+
+                    {% for comment in comments %}
+                    <div class="comment">
+                        <div class="date">{{ comment.date }}</div>
+                        <strong>{{ comment.user }}</strong>
+                        <p>{{ comment.comment|linebreaks }}</p>
+                    </div>
+                    {% endfor %}
+                    {% if user.is_authenticated %}
+                        <form method="POST" class="post-form" action="{% url 'show_listing' listing.id %}">{% csrf_token %}
+                            <textarea required id="id_comment" class="form-control font-italic" placeholder="Enter comment here..." name="comment"></textarea>
+                            <button type="submit" class="save btn btn-default">Add comment</button>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            There is no such listing! :(
+        {% endif %}
 </div>   
 {% endblock %}
         

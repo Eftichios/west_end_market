@@ -3,13 +3,9 @@ from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
-from west_end_market.models import Listing
-from west_end_market.models import User
-from west_end_market.models import Category
-from west_end_market.models import Category as C, Listing as L, User as U
-from west_end_market.forms import ListingForm, UserForm, UserProfileForm
+from west_end_market.models import Category, Listing, User, Comment
+from west_end_market.forms import ListingForm, UserForm, UserProfileForm, CommentForm
 from django.contrib.auth.decorators import login_required
-from datetime import datetime
 
 
 def index(request):
@@ -25,8 +21,9 @@ def add_listing(request):
         if form.is_valid():
             listing = form.save(commit=False)
             listing.picture = form.cleaned_data['picture']
-            listing.user = U.objects.get(username='Maria')
+            listing.user = User.objects.get(username='Maria')
             setattr(listing.category, 'listings', listing.category.listings+1)
+            listing.id = listing.category[0:1] + str(listing.category.listings)
             listing.category.save()
             listing.date = timezone.now()
             listing.save()
@@ -87,28 +84,40 @@ def user_logout(request):
     return HttpResponseRedirect(reverse('index'))
 
 
-# NOTE: When my listings is taken out of comments
-# we get 'block' tag with name 'title_block' appears more than once error
-
 """
 def my_listings(request):
     return render(request, 'west_end_market/mylistings.html', {})
 """
 
 
-"""
-def show_listing(request):
+def show_listing(request, listing_id):
     context_dict = {}
     try:
-        listing = Listing.objects.get(listing_id=listing_id)
-        comments = Comment.onjects.filter(listing=listing)
+        listing = Listing.objects.get(id=listing_id)
+        comments = Comment.objects.filter(listing=listing)
         context_dict['comments'] = comments
         context_dict['listing'] = listing
+        # if user is logged in then they can comment
+        if request.method == "POST":
+            try:
+                listing = Listing.objects.get(id=listing_id)
+                form = CommentForm(request.POST)
+                if form.is_valid():
+                    comment = form.save(commit=False)
+                    comment.listing = listing
+                    comment.user = request.user
+                    comment.save()
+                    return HttpResponseRedirect(reverse('show_listing', args=(listing_id,)))
+            except Listing.DoesNotExist:
+                form = None
+        else:
+            form = CommentForm()
     except Listing.DoesNotExist:
         context_dict['listing'] = None
         context_dict['comments'] = None
-    return render(request,'rango/listing.html', context_dict)
-"""
+    context_dict["form"] = form
+    return render(request, 'west_end_market/listing.html', context_dict)
+
 
 def user_profile(request, username):
     context_dict = {}
@@ -116,9 +125,10 @@ def user_profile(request, username):
         user = User.objects.get(username=username)
         listings = Listing.objects.filter(user=user)
         context_dict['listings'] = listings
-        context_dict['user'] = user   
+        context_dict['user'] = user
     except User.DoesNotExist:
         context_dict['user'] = None
         context_dict['listings'] = None
     return render(request, 'west_end_market/user_profile.html', context_dict)
+
 
