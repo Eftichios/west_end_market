@@ -6,7 +6,7 @@
 {% endblock %}
         
 {% block body_block %}
-<div class="container">
+<div class="container margin-top-20">
         {% if listing %}
             <div class="row">
                 <div class="col-md-12">
@@ -17,9 +17,8 @@
                 <div class="col-md-3">
                     <div class="margin-bottom-20 text-center">
                         <div class="container">
-                            <img src="{{listing.picture.url}}" class="height-200 width-200" alt="image of the item">
+                            <img src="{{listing.picture.url}}" class="height-240 width-240 round-edges" alt="image of the item">
                         </div>
-                        
                     </div>
                 </div>
                 <div class="text-box col-md-9">
@@ -34,6 +33,9 @@
                     </div>
                     <div class="row">
                         <p><strong>Postcode: </strong>{{listing.postcode}}</p>
+                    </div>
+                    <div class="row">
+                        <p><a href="mailto:gla.westendmarket@gmail.com?subject=West%20End%20Market:%20Reported%20Listing&body=User%20reports%20the%20following%20listing:%20{{listing.title}}%0D%0A%0D%0APlease%20provide%20additional%20information%20for%20the%20report%20below:%0D%0A%0D%0A%0D%0A">Report Listing</a></p>
                     </div>
                 </div>
             </div>
