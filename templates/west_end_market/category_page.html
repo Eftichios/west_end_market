@@ -1,0 +1,40 @@
+{% extends 'west_end_market/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Listing
+{% endblock %}
+        
+{% block body_block %}
+<div class="container margin-top-20">
+    <div>
+        <h4>Category: School</h4>
+        <hr>
+    </div>
+    
+    <div class="row margin-top-10">
+        <div class="col-md-2">
+            <div class="text-center">
+                <div>
+                    <img src="{% static 'images/square300.jpg' %}" class="photo-fit photo-fit-mobile round-edges" alt="item image">
+                </div>
+            </div>
+        </div>
+        <div class="text-box text-box-mobile col-md-9">
+            <div class="row">
+                <span><strong>Title: </strong>This is a sample title</span>
+            </div>
+            <div class="row">
+                <span><strong>Price: </strong>£50</span>
+            </div>
+            <div class="row">
+                <span><strong>Postcode: </strong>G11 6QH</span>
+            </div>
+        </div>
+    </div>
+</div>  
+{% endblock %}
+        
+        
+        
+        
