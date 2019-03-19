@@ -26,14 +26,11 @@ html {
     font-weight: 400;
     font-size: 18px;
     text-rendering: optimizeLegibility;
-    min-height: 100%;
+    position: relative;
 }
 
 body {
     min-height: 100%;
-    position: relative;
-    margin: 0;
-    padding-bottom: 80px;
 }
 
 
@@ -80,8 +77,10 @@ h2{
 /* FOOTER */
 /* --------------------------------------------------- */
 .footer-style {
+    color: #ffffff;
     background-color: #212121;
-    color: white;
+    position: relative;
+    bottom: 0px;
 }
 
 /* --------------------------------------------------- */
@@ -111,7 +110,6 @@ h2{
         text-align: center;
     }
 }
-
 
 /* --------------------------------------------------- */
 /* DIFFERENT MARGIN/PADDING/WIDTH CLASSES */
