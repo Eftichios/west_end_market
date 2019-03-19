@@ -77,10 +77,15 @@ h2{
 /* FOOTER */
 /* --------------------------------------------------- */
 .footer-style {
-    color: #ffffff;
     background-color: #212121;
     position: relative;
     bottom: 0px;
+}
+
+.footer-content {
+    color: #ffffff;
+    padding: 0 25px;
+    font-size: 80%;
 }
 
 /* --------------------------------------------------- */
