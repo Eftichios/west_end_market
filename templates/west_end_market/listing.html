@@ -17,7 +17,11 @@
                 <div class="col-md-3">
                     <div class="margin-bottom-20 text-center">
                         <div class="container">
-                            <img src="{{listing.picture.url}}" class="height-240 width-240 round-edges" alt="image of the item">
+                            <img id="myImg" src="{{listing.picture.url}}" class="height-240 width-240 round-edges" alt="image of the item">
+                            <div id="myModal" class="modal">
+                                <span class="close">&times;</span>
+                                <img class="modal-content" id="img01">
+                            </div>
                         </div>
                     </div>
                 </div>
