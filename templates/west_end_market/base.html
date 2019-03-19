@@ -43,13 +43,13 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">School</a>
-                                <a class="dropdown-item" href="#">Electronics</a>
-                                <a class="dropdown-item" href="#">Clothing</a>
-                                <a class="dropdown-item" href="#">Homeware</a>
-                                <a class="dropdown-item" href="#">Sports</a>
+                                <a class="dropdown-item" href="{% url 'show_category' 'school' %}">School</a>
+                                <a class="dropdown-item" href="{% url 'show_category' 'electronics' %}">Electronics</a>
+                                <a class="dropdown-item" href="{% url 'show_category' 'clothing' %}">Clothing</a>
+                                <a class="dropdown-item" href="{% url 'show_category' 'homeware' %}">Homeware</a>
+                                <a class="dropdown-item" href="{% url 'show_category' 'sports' %}">Sports</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Other</a>
+                                <a class="dropdown-item" href="{% url 'show_category' 'other' %}">Other</a>
                             </div>
                         </li>
                     </ul>

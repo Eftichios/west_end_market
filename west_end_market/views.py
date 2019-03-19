@@ -23,7 +23,7 @@ def add_listing(request):
             listing.picture = form.cleaned_data['picture']
             listing.user = request.user
             setattr(listing.category, 'listings', listing.category.listings+1)
-            listing.id = listing.category.name[0:1] + str(listing.category.listings)
+            listing.id = listing.category.name[0:3] + str(listing.category.listings)
             listing.category.save()
             listing.date = timezone.now()
             listing.save()
@@ -119,10 +119,23 @@ def show_listing(request, listing_id):
     return render(request, 'west_end_market/listing.html', context_dict)
 
 
-def user_profile(request, username):
+def show_category(request, category_title):
     context_dict = {}
     try:
-        user = User.objects.get(username=username)
+        category = Category.objects.get(name=category_title)
+        listings = Listing.objects.filter(category=category)
+        context_dict["category"] = category
+        context_dict["listings"] = listings
+    except Category.DoesNotExist:
+        context_dict['category'] = None
+        context_dict['listings'] = None
+    return render(request, 'west_end_market/category_page.html', context_dict)
+
+
+def user_profile(request, user_username):
+    context_dict = {}
+    try:
+        user = User.objects.get(username=user_username)
         listings = Listing.objects.filter(user=user)
         context_dict['listings'] = listings
         context_dict['user'] = user

@@ -6,33 +6,39 @@
 {% endblock %}
         
 {% block body_block %}
-<div class="container margin-top-20">
-    <div>
-        <h4>Category: School</h4>
-        <hr>
-    </div>
-    
-    <div class="row margin-top-10">
-        <div class="col-md-2">
-            <div class="text-center">
-                <div>
-                    <img src="{% static 'images/square300.jpg' %}" class="photo-fit photo-fit-mobile round-edges" alt="item image">
+{% if category %}
+    <div class="container margin-top-20">
+        <div>
+            <h4>Category: {{category.title}}</h4>
+            <hr>
+        </div>
+
+        {% for listing in listings %}
+        <div class="row margin-top-10">
+            <div class="col-md-2">
+                <div class="text-center">
+                    <div>
+                        <a href="{% url 'show_listing' listing.id %}"><img src="{{listing.picture.url}}" class="photo-fit photo-fit-mobile round-edges" alt="item image"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-box text-box-mobile col-md-9">
+                <div class="row">
+                    <span><strong>Title: </strong>{{listing.title}}</span>
+                </div>
+                <div class="row">
+                    <span><strong>Price: </strong>{{listing.price}}</span>
+                </div>
+                <div class="row">
+                    <span><strong>Postcode: </strong>{{listing.postcode}}</span>
                 </div>
             </div>
         </div>
-        <div class="text-box text-box-mobile col-md-9">
-            <div class="row">
-                <span><strong>Title: </strong>This is a sample title</span>
-            </div>
-            <div class="row">
-                <span><strong>Price: </strong>£50</span>
-            </div>
-            <div class="row">
-                <span><strong>Postcode: </strong>G11 6QH</span>
-            </div>
-        </div>
+        {% endfor %}
     </div>
-</div>  
+{% else %}
+    There is no such category. Please check that you are at the correct url!
+{% endif %}
 {% endblock %}
         
         
