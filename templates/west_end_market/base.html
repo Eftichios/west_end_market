@@ -21,12 +21,12 @@
         </title>
     </head>
   
-    <body>
+    <body class="d-flex flex-column h-100">
         <!-- SUGGESTED IMPLEMENTATION -->
-        <div>
+        <header>
             <nav class="navbar navbar-expand-lg navbar-light light-primary-color">
                 <img src="{% static 'images/logo.png' %}" alt="image of the logo" width=auto height= 65px>
-                <h1><a class="navbar-brand main-heading margin-right-40" style="color: #FF5722;" href="#">West End Market</a></h1>
+                <h1><a class="navbar-brand main-heading margin-right-40" style="color: #FF5722;" href="{% url 'index' %}">West End Market</a></h1>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -69,22 +69,24 @@
                     </ul>
                 </div>
             </nav>
-        </div>
+        </header>
         
-        <div>
-            {% block body_block %}
+        <main role="main" class="flex-shrink-0 margin-bottom-40">
+            <div>
+                {% block body_block %}
+
+                {% endblock %}
+            </div>
+        </main>
         
-            {% endblock %}
-        </div>
-        
-        
-        <div class="navbar footer2" style="background-color: #212121;">
-        <div class="navbar footer2" style="background-color: #212121;">
+        <footer class="footer mt-auto py-3 footer-style">
             <!-- DUMMY FOOTER TEXT -->
-            <h3>FOOTER</h3>
-            <p>LLorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. </p>
-            <p>Copyright: West End Market 2019</p>
-        </div>
+            <div class="container">
+                <h3>FOOTER</h3>
+                <p>LLorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
+                <p>Copyright: West End Market 2019</p>
+            </div>
+        </footer>
         
         
 
