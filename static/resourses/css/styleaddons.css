@@ -148,6 +148,10 @@ h2{
     height: 240px;
 }
 
+.height-200 {
+    height: 200px;
+}
+
 .margin-right-20 {
     margin-right: 20px;
 }
@@ -174,6 +178,11 @@ h2{
 
 .width-240 {
     width: 240px;
+    object-fit: cover;
+}
+
+.width-200 {
+    width: 200px;
     object-fit: cover;
 }
 
