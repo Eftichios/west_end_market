@@ -18,7 +18,7 @@ class ListingForm(forms.ModelForm):
 
     class Meta:
         model = Listing
-        exclude = ('user', 'date')
+        exclude = ('user', 'date', 'id')
 
 
 class UserForm(forms.ModelForm):

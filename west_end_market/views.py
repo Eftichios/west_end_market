@@ -21,15 +21,15 @@ def add_listing(request):
         if form.is_valid():
             listing = form.save(commit=False)
             listing.picture = form.cleaned_data['picture']
-            listing.user = User.objects.get(username=request.user)
+            listing.user = request.user
             setattr(listing.category, 'listings', listing.category.listings+1)
-            listing.id = listing.category[0:1] + str(listing.category.listings)
+            listing.id = listing.category.name[0:1] + str(listing.category.listings)
             listing.category.save()
             listing.date = timezone.now()
             listing.save()
             return index(request)
-    else:
-        print(form.errors)
+        else:
+            print(form.errors)
 
     return render(request, 'west_end_market/add_listing.html', {'form': form})
 

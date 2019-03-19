@@ -24,6 +24,11 @@ class Category(models.Model):
         return self.name
 
 
+# helper function to upload listing's pictures under a user's directory
+def upload_to(instance, filename):
+    return '%s/%s' % (instance.user.username, filename)
+
+
 class Listing(models.Model):
     id = models.CharField(primary_key=True, max_length=10)
     title = models.CharField(max_length=100)
@@ -32,7 +37,7 @@ class Listing(models.Model):
     category = models.ForeignKey(Category)
     user = models.ForeignKey(User)
     date = models.DateTimeField(default=timezone.now)
-    picture = models.ImageField(upload_to='photos/')
+    picture = models.ImageField(upload_to=upload_to)
     postcode = models.CharField(max_length=10)
 
     def __str__(self):
@@ -48,5 +53,5 @@ class Comment(models.Model):
     def __str__(self):
         return self.comment
 
-# def user_directory_path(instance,filename):
-#     return 'user_{0}/{1}'.format(instance.user.username,filename)
+
+

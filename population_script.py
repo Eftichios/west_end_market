@@ -26,7 +26,7 @@ def populate():
                      "category": "school",
                      "user": "John Pope",
                      "date": timezone.now(),
-                     "picture": "dog.jpg",
+                     "picture": "John Pope/linear.jpg",
                      "postcode": "PCSCH1"},
 
               {"id": "s2",
@@ -36,7 +36,7 @@ def populate():
                      "category": "school",
                      "user": "Christopher Smith",
                      "date": timezone.now(),
-                     "picture": "dog.jpg",
+                     "picture": "Christopher Smith/calculus.jpg",
                      "postcode": "PCSCH2"},
 
               {"id": "s3",
@@ -46,7 +46,7 @@ def populate():
                      "category": "school",
                      "user": "Peter Brown",
                      "date": timezone.now(),
-                     "picture": "dog.jpg",
+                     "picture": "Peter Brown/django.jpg",
                      "postcode": "PCSCH3"}]
 
     electronics = [{"id": "e1",
@@ -56,7 +56,7 @@ def populate():
                           "category": "electronics",
                           "user": "James",
                           "date": timezone.now(),
-                          "picture": "dog.jpg",
+                          "picture": "James/earphones.jpg",
                           "postcode": "PCELE1"},
 
                     {"id": "e2",
@@ -66,7 +66,7 @@ def populate():
                      "category": "electronics",
                      "user": "Veronica",
                      "date": timezone.now(),
-                     "picture": "dog.jpg",
+                     "picture": "Veronica/xioami.jpg",
                      "postcode": "PCELE1"},
 
                     {"id": "e3",
@@ -76,7 +76,7 @@ def populate():
                      "category": "electronics",
                      "user": "Maria",
                      "date": timezone.now(),
-                     "picture": "dog.jpg",
+                     "picture": "Maria/laptop.jpg",
                      "postcode": "PCELE1"}]
 
     cats = {"school": {"listings": school, "total": len(school)},
@@ -117,7 +117,7 @@ def add_listing(id, title, description, price, category, user, date, picture, po
 
 
 def add_comment(comment, user, listing):
-    co = Comment.objects.get_or_create(comment=comment,user=user, listing=listing)[0]
+    co = Comment.objects.get_or_create(comment=comment, user=user, listing=listing)[0]
     co.save()
     return co
 
