@@ -145,3 +145,18 @@ def user_profile(request, user_username):
     return render(request, 'west_end_market/user_profile.html', context_dict)
 
 
+def search_results(request):
+    context_dict = {}
+    listings = Listing.objects.all()
+    results = []
+    if request.method == 'POST':
+        context_dict["search"] = request.POST.get("search")
+        for listing in listings:
+            if request.POST.get("search").lower() in listing.title.lower() or request.POST.get("search").lower() in listing.description.lower():
+                results += [listing]
+        context_dict["results"] = results
+    else:
+        context_dict["results"] = results
+    return render(request, 'west_end_market/search_results.html', context_dict)
+
+
