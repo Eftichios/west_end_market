@@ -9,7 +9,7 @@
 {% if category %}
     <div class="container margin-top-20">
         <div>
-            <h4>Category: {{category.title}}</h4>
+            <h4 class="text-capitalize">Category: {{category.name}}</h4>
             <hr>
         </div>
 
@@ -18,7 +18,7 @@
             <div class="col-md-2">
                 <div class="text-center">
                     <div>
-                        <a href="{% url 'show_listing' listing.id %}"><img src="{{listing.picture.url}}" class="photo-fit photo-fit-mobile round-edges" alt="item image"></a>
+                        <a href="{% url 'show_listing' listing.id %}"><img id="myImg" src="{{listing.picture.url}}" class="photo-fit photo-fit-mobile round-edges" alt="item image"></a>
                     </div>
                 </div>
             </div>
@@ -31,6 +31,9 @@
                 </div>
                 <div class="row">
                     <span><strong>Postcode: </strong>{{listing.postcode}}</span>
+                </div>
+                <div class="row">
+                    <span><strong>User: </strong><a href="{% url 'user_profile' listing.user.username %}">{{listing.user.username}}</a></span>
                 </div>
             </div>
         </div>
