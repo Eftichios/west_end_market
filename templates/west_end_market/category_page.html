@@ -33,7 +33,7 @@
                     <span><strong>Postcode: </strong>{{listing.postcode}}</span>
                 </div>
                 <div class="row">
-                    <span><strong>User: </strong><a href="{% url 'user_profile' listing.user.username %}">{{listing.user.username}}</a></span>
+                    <span><strong>User: </strong><a class="text-decoration-none" href="{% url 'user_profile' listing.user.username %}">{{listing.user.username}}</a></span>
                 </div>
             </div>
         </div>

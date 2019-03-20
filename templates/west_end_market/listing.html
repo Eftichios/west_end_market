@@ -9,7 +9,7 @@
 <div class="container margin-top-20">
         {% if listing %}
             <div class="row">
-                <div class="col-md-3 text-center">
+                <div class="col-md-12 text-center margin-bottom-20">
                     <h3>{{listing.title}}</h3>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                         <p><strong>Postcode: </strong>{{listing.postcode}}</p>
                     </div>
                     <div class="row">
-                        <p><strong>User: </strong><a href="{% url 'user_profile' listing.user.username %}">{{listing.user.username}}</a></p>
+                        <p><strong>User: </strong><a class="text-decoration-none" href="{% url 'user_profile' listing.user.username %}">{{listing.user.username}}</a></p>
                     </div>
                     <div class="row">
                         <p><strong>Email: </strong>{{listing.user.email}}</p>
@@ -55,7 +55,7 @@
 
                     {% for comment in comments %}
                     <div class="comment-container">
-                        <div class="date"><strong><a href="{% url 'user_profile' comment.user %}">{{ comment.user }}</a></strong> - {{ comment.date }}
+                        <div class="date"><strong><a class="text-decoration-none" href="{% url 'user_profile' comment.user %}">{{ comment.user }}</a></strong> - {{ comment.date }}
                         <br>{{ comment.comment|linebreaks }}</div>
                     </div>
                     {% endfor %}

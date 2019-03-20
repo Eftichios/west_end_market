@@ -42,7 +42,7 @@ h2 {
     color: #FF5722;
 }
 
-text-black {
+.text-black {
     color: #212121;
 }
 
@@ -80,6 +80,9 @@ text-black {
      border-radius: 20px;
 }
 
+.reduce-size {
+    font-size: 80%;
+}
 
 /* --------------------------------------------------- */
 /* FOOTER */
