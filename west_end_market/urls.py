@@ -10,7 +10,6 @@ urlpatterns = [
     url(r'^user/(?P<user_username>[\w\-]+)/$', views.user_profile, name='user_profile'),
     url(r'^my_account/$', views.my_account, name='my_account'),
     url(r'^edit_profile/$', views.edit_profile, name='edit_profile'),
-    #url(r'^my_listings/$', views.my_listings, name='my_listings'),
     url(r'^listing/(?P<listing_id>[\w\-]+)/$', views.show_listing, name='show_listing'),
     url(r'^search_results/$', views.search_results, name='search_results'),
     url(r'^category/(?P<category_title>[\w\-]+)/$', views.show_category, name='show_category'),
