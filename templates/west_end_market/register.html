@@ -7,8 +7,10 @@
 
 {% block body_block %}
 {% if registered %}
-    You have successfully created a new account!
-    <a href=" {% url 'login' %} ">Click here to login!</a>
+    <div class="alert alert-success" role="alert">
+        You have successfully created a new account!
+        <a href=" {% url 'login' %} ">Click here to login!</a>
+    </div>
 {% endif %}
 <div class="container margin-top-30">
     <form id="listing_form" method = 'post' enctype="multipart/form-data" action="{% url 'register' %}">
@@ -28,10 +30,6 @@
             </div>
 
             <div class="col-md-8">
-                <div>
-                {{user_form.errors}}
-                {{profile_form.errors}}
-            </div>
                 <div class="form-group font-weight-bold">
                     <label>Username</label>
                     <input required id="id_username" type="username" class="form-control font-italic" placeholder="i.e JohnMathew" name="username">
@@ -49,6 +47,17 @@
                 <div class="text-right">
                     <button class="btn btn-primary block-button" type="submit" value="submit" >Register</button>
                 </div>
+                <div class="margin-top-20">
+                    {% if user_form.errors%}
+                        <div class="alert alert-warning" role="alert">
+                            {{user_form.errors}}
+                        </div>
+                    {% endif %}
+                    {% if profile_form.errors%}
+                        <div class="alert alert-warning" role="alert">
+                            {{profile_form.errors}}
+                        </div>
+                    {% endif %}</div>
             </div>
         </div>       
     </form>
