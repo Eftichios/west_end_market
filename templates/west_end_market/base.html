@@ -58,14 +58,21 @@
                         <button class="btn btn-success my-2 my-sm-0 margin-right-40 block-button" type="submit">Search &#x1F50D;</button>
                     </form>
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-<!--                            <button type="button" class="btn btn-primary margin-right-20 block-button">Login</button>-->
-                            <a href="{% url 'login' %}" class="btn btn-primary margin-right-20 block-button">Login</a>
-                        </li>
-                        <li class="nav-item">
-<!--                            <button type="button" class="btn btn-danger margin-right-20 block-button">Sign up</button>-->
-                            <a href="{% url 'register' %}" class="btn btn-danger margin-right-20 block-button">Sign up</a>
-                        </li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a href="#" class="btn btn-primary margin-right-20 block-button">My account</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'logout' %}" class="btn btn-danger margin-right-20 block-button">Logout</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a href="{% url 'login' %}" class="btn btn-primary margin-right-20 block-button">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'register' %}" class="btn btn-danger margin-right-20 block-button">Sign up</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </nav>

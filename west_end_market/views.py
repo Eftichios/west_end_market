@@ -80,7 +80,7 @@ def user_login(request):
 
 @login_required
 def user_logout(request):
-    login(request)
+    logout(request)
     return HttpResponseRedirect(reverse('index'))
 
 
