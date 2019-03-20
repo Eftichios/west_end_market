@@ -9,7 +9,7 @@
 {% if category %}
     <div class="container margin-top-20">
         <div>
-            <h4 class="text-capitalize">Category: {{category.name}}</h4>
+            <h4 class="text-capitalize">Category: {{category}}</h4>
             <hr>
         </div>
 
@@ -40,7 +40,8 @@
         {% endfor %}
     </div>
 {% else %}
-    There is no such category. Please check that you are at the correct url!
+    <div class="alert alert-danger" role="alert">
+        <span>&#10004; There is no such category. Please check the url and try again!</span>
 {% endif %}
 {% endblock %}
         

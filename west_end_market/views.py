@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
-from west_end_market.models import Category, Listing, User, Comment
+from west_end_market.models import Category, Listing, User, Comment, UserProfile
 from west_end_market.forms import ListingForm, UserForm, UserProfileForm, CommentForm
 from django.contrib.auth.decorators import login_required
 
@@ -14,6 +14,7 @@ def index(request):
     return render(request, 'west_end_market/index.html', context_dict)
 
 
+@login_required
 def add_listing(request):
     form = ListingForm()
     if request.method == 'POST':
@@ -38,7 +39,7 @@ def register(request):
     registered = False
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
-        profile_form = UserProfileForm(data=request.POST)
+        profile_form = UserProfileForm(request.POST, request.FILES)
 
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
@@ -46,10 +47,9 @@ def register(request):
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
+            profile.picture = profile_form.cleaned_data['picture']
             profile.save()
             registered = True
-        else:
-            print(user_form.errors, profile_form.errors)
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
@@ -58,6 +58,7 @@ def register(request):
 
 
 def user_login(request):
+    success = True
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -70,11 +71,11 @@ def user_login(request):
             else:
                 return HttpResponse("Your West End Market account is disabled.")
         else:
-            print("Invalid login details: {0}, {1}".format(username, password))
-            return HttpResponse("Invalid login details supplied.")
+            success = False
+            return render(request,'west_end_market/loginpage.html', {"success": success})
 
     else:
-        return render(request, 'west_end_market/loginpage.html', {})
+        return render(request, 'west_end_market/loginpage.html', {"success": success})
 
 
 
@@ -120,6 +121,8 @@ def show_listing(request, listing_id):
 
 
 def show_category(request, category_title):
+    if category_title == 'all':
+        return render(request, 'west_end_market/category_page.html', {'listings': Listing.objects.all(), 'category': 'all'})
     context_dict = {}
     try:
         category = Category.objects.get(name=category_title)
@@ -160,3 +163,24 @@ def search_results(request):
     return render(request, 'west_end_market/search_results.html', context_dict)
 
 
+@login_required
+def my_account(request):
+    user = request.user
+    listings = Listing.objects.filter(user=user)
+    profile = UserProfile.objects.get(user=user)
+    return render(request, 'west_end_market/my_account.html', {'listings':listings, 'user': user, 'profile': profile})
+
+
+@login_required
+def edit_profile(request):
+    user = request.user
+    profile = UserProfile.objects.get(user=user)
+    if request.method == 'POST':
+        user.username = request.POST.get("username")
+        user.set_password = request.POST.get("password")
+        user.email = request.POST.get("email")
+        profile.picture = request.FILES.get("picture")
+        user.save()
+        profile.save()
+
+    return render(request, 'west_end_market/edit_profile.html', {'user': user, 'profile': profile})

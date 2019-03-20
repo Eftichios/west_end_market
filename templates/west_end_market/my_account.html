@@ -1,0 +1,49 @@
+{% extends 'west_end_market/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    My account
+{% endblock %}
+
+{% block body_block %}
+<div class="container margin-top-30">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <h3>{{user.username}}</h3>
+                <div class="text-center">
+                    {% if profile.picture.url %}
+                        <img id="id_profile" class="img-thumbnail"  src="{{profile.picture.url}}" alt="image of the item" width=200 height=200>
+                    {% else %}
+                        <img id="id_placeholder" class="img-thumbnail"  src="{% static 'images/profile.jpg' %}" alt="image of the item" width=200 height=200>
+                    {% endif %}
+                </div>
+
+                <div class="form-group text-center font-weight-bold ">
+                    <label>Profile Picture</label>
+                    <br>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="form-group font-weight-bold">
+                    <label>Username</label>
+                    <p id="id_username" class="form-control font-italic">{{user.username}}</p>
+                    <p class="text-left helptext">Required. 25 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
+                </div>
+                <div class="form-group font-weight-bold">
+                    <label>Email address</label>
+                    <p id="id_email" class="form-control font-italic" >{{user.email}}</p>
+                </div>
+                Total listings: {{listings|length}}
+                <div class="text-right">
+                    <a href="{% url 'edit_profile' %}"><button class="btn btn-danger block-button">Edit Profile</button></a>
+                    <a href="{% url 'user_profile' user.username %}"><button class="btn btn-primary block-button">My listings</button></a>
+                    <a href="{% url 'add_listing' %}"><button class="btn btn-primary block-button">Create Listing</button></a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+{% endblock %}

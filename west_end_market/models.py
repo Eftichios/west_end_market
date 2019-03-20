@@ -3,11 +3,16 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 
+# helper function to upload listing's pictures under a user's directory
+def upload_to(instance, filename):
+    return '%s/%s' % (instance.user.username, filename)
+
+
 class UserProfile(models.Model):
 
     user = models.OneToOneField(User)
 
-    picture = models.ImageField(upload_to='profile_images', blank=True)
+    picture = models.ImageField(upload_to=upload_to, blank=True)
 
     def __str__(self):
         return self.user.username
@@ -22,11 +27,6 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-
-
-# helper function to upload listing's pictures under a user's directory
-def upload_to(instance, filename):
-    return '%s/%s' % (instance.user.username, filename)
 
 
 class Listing(models.Model):
