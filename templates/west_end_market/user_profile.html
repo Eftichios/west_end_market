@@ -13,9 +13,9 @@
                 <h3>User: {{user.username}}</h3>
                 <div>
                     {% if profile %}
-                        <img id="id_profile" class="img-fluid item-box-mobile height-200 width-200"  src="{{ profile.picture.url}}" alt="profile picture">
+                        <img id="id_profile" class="img-fluid item-box-mobile height-240 width-240 round-edges"  src="{{ profile.picture.url}}" alt="profile picture">
                     {% else %}
-                        <img id="id_profile" class="img-fluid item-box-mobile height-200 width-200"  src="{% static 'images/profile.jpg' %}" alt="profile picture">
+                        <img id="id_profile" class="img-fluid item-box-mobile height-240 width-240 round-edges"  src="{% static 'images/profile.jpg' %}" alt="profile picture">
                     {% endif %}
                 </div>
             </div>
