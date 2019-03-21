@@ -10,18 +10,8 @@
       <change beforePath="$PROJECT_DIR$/../tango_with_django_project/templates/rango/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/../tango_with_django_project/templates/rango/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/James/aW8NmGn_460s.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/James/bicycle_4GbRvaG.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/James/bicycle_4GbRvaG_pOSLLbn.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/James/earphones_3uJort9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/NikolasFiniotis/IMG_3609.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/finiotis98/CD394868-D1CE-4861-9F58-297CDC988F45.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/population_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/population_script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/west_end_market/edit_listing.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/west_end_market/edit_listing.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/west_end_market/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/west_end_market/edit_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/west_end_market/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/west_end_market/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/west_end_market/search_results.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/west_end_market/search_results.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/west_end_market/user_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/west_end_market/user_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/west_end_market/my_account.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/west_end_market/my_account.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/west_end_market/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/west_end_market/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/west_end_market/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/west_end_market/views.py" afterDir="false" />
     </list>
@@ -45,8 +35,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/west_end_market/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="232" column="65" selection-start-line="232" selection-start-column="65" selection-end-line="232" selection-end-column="65" />
+            <state relative-caret-position="362">
+              <caret line="205" column="52" lean-forward="true" selection-start-line="205" selection-start-column="52" selection-end-line="205" selection-end-column="52" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -54,20 +44,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/west_end_market/register.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/west_end_market/edit_profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="66" />
+            <state relative-caret-position="51">
+              <caret line="3" column="23" lean-forward="true" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/west_end_market/edit_profile.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/west_end_market/my_account.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="97" selection-start-line="10" selection-start-column="97" selection-end-line="10" selection-end-column="97" />
+            <state relative-caret-position="187">
+              <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -75,7 +65,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/west_end_market/edit_listing.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
+            <state relative-caret-position="323">
               <caret line="28" column="82" selection-start-line="28" selection-start-column="82" selection-end-line="28" selection-end-column="82" />
             </state>
           </provider>
@@ -84,7 +74,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/west_end_market/search_results.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
+            <state relative-caret-position="748">
               <caret line="44" column="52" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
             </state>
           </provider>
@@ -93,7 +83,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/population_script.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-179">
+            <state relative-caret-position="170">
               <caret line="255" column="91" selection-start-line="255" selection-start-column="91" selection-end-line="255" selection-end-column="91" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -105,7 +95,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/west_end_market/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="238">
               <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -117,7 +107,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/west_end_market/user_profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
+            <state relative-caret-position="442">
               <caret line="26" column="90" selection-start-line="26" selection-start-column="90" selection-end-line="26" selection-end-column="90" />
             </state>
           </provider>
@@ -126,7 +116,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/west_end_market/loginpage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
+            <state relative-caret-position="1020">
               <caret line="60" column="14" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
               <folding>
                 <element signature="e#439#446#1" expanded="true" />
@@ -169,7 +159,6 @@
         <option value="$PROJECT_DIR$/templates/west_end_market/index.html" />
         <option value="$PROJECT_DIR$/west_end_market/models.py" />
         <option value="$PROJECT_DIR$/west_end_market/forms.py" />
-        <option value="$PROJECT_DIR$/templates/west_end_market/my_account.html" />
         <option value="$PROJECT_DIR$/templates/west_end_market/listing.html" />
         <option value="$PROJECT_DIR$/templates/west_end_market/add_listing.html" />
         <option value="$PROJECT_DIR$/templates/west_end_market/category_page.html" />
@@ -188,6 +177,7 @@
         <option value="$PROJECT_DIR$/population_script.py" />
         <option value="$PROJECT_DIR$/templates/west_end_market/edit_listing.html" />
         <option value="$PROJECT_DIR$/west_end_market/views.py" />
+        <option value="$PROJECT_DIR$/templates/west_end_market/my_account.html" />
         <option value="$PROJECT_DIR$/templates/west_end_market/edit_profile.html" />
       </list>
     </option>
@@ -503,13 +493,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/west_end_market/my_account.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/west_end_market/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -609,9 +592,40 @@
     <entry file="file://$USER_HOME$/AppData/Local/Temp/guitar.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/west_end_market/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/west_end_market/search_results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" column="52" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/west_end_market/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/west_end_market/user_profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="90" selection-start-line="26" selection-start-column="90" selection-end-line="26" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/west_end_market/loginpage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
+        <state relative-caret-position="1020">
           <caret line="60" column="14" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
           <folding>
             <element signature="e#439#446#1" expanded="true" />
@@ -619,17 +633,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/west_end_market/search_results.html">
+    <entry file="file://$PROJECT_DIR$/population_script.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="44" column="52" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/west_end_market/user_profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="26" column="90" selection-start-line="26" selection-start-column="90" selection-end-line="26" selection-end-column="90" />
+        <state relative-caret-position="170">
+          <caret line="255" column="91" selection-start-line="255" selection-start-column="91" selection-end-line="255" selection-end-column="91" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -640,54 +650,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/west_end_market/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/population_script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-179">
-          <caret line="255" column="91" selection-start-line="255" selection-start-column="91" selection-end-line="255" selection-end-column="91" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/west_end_market/edit_listing.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="82" selection-start-line="28" selection-start-column="82" selection-end-line="28" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/west_end_market/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="232" column="65" selection-start-line="232" selection-start-column="65" selection-end-line="232" selection-end-column="65" />
+        <state relative-caret-position="362">
+          <caret line="205" column="52" lean-forward="true" selection-start-line="205" selection-start-column="52" selection-end-line="205" selection-end-column="52" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/west_end_market/register.html">
+    <entry file="file://$PROJECT_DIR$/templates/west_end_market/my_account.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="66" />
+        <state relative-caret-position="187">
+          <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/west_end_market/edit_listing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="28" column="82" selection-start-line="28" selection-start-column="82" selection-end-line="28" selection-end-column="82" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/west_end_market/edit_profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="97" selection-start-line="10" selection-start-column="97" selection-end-line="10" selection-end-column="97" />
+        <state relative-caret-position="51">
+          <caret line="3" column="23" lean-forward="true" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
         </state>
       </provider>
     </entry>

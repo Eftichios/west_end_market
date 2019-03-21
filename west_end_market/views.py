@@ -192,17 +192,18 @@ def edit_profile(request):
     edited = False
     user = request.user
     try:
+        print("Retieving profile...")
         profile = UserProfile.objects.get(user=user)
     except UserProfile.DoesNotExist:
         profile = None
     if request.method == 'POST':
         if len(request.POST.get("password")) < 6:
             return render(request, 'west_end_market/edit_profile.html',
-                          {'user': user, 'profile': profile, 'edited': edited,'password_short':True})
+                          {'user': user, 'profile': profile, 'edited': edited, 'password_short': True})
         user.username = request.POST.get("username")
         user.set_password(request.POST.get("password"))
         user.email = request.POST.get("email")
-        if request.FILES.get("picture"):
+        if request.FILES.get("picture") and profile:
             profile.picture = request.FILES.get("picture")
             profile.save()
         user.save()
