@@ -8,13 +8,35 @@
 {% block body_block %}
 <div class="container">
     <form>
-        <div class="row"> 
-            <div class="col-md-12 margin-top-10">
-                <h3>{{user.username}} listings</h3>
-                <hr>
+        <div class="row margin-top-20">
+            <div class="col-md-3">
+                <h3>User: {{user.username}}</h3>
+                <div>
+                    {% if profile %}
+                        <img id="id_profile" class="img-fluid item-box-mobile height-240 width-240 round-edges"  src="{{ profile.picture.url}}" alt="profile picture">
+                    {% else %}
+                        <img id="id_profile" class="img-fluid item-box-mobile height-240 width-240 round-edges"  src="{% static 'images/profile.jpg' %}" alt="profile picture">
+                    {% endif %}
+                </div>
             </div>
+            <div class="col-md-8 font-size-inc">
+                <br>
+                <div class="row margin-top-50">
+                    <div class="text-box-mobile col-md-9">
+                        <div class="row">
+                            <span><strong>Email address: </strong>{{user.email}}</span>
+                        </div>
+                        <div class="row">
+                            <span class="text-right"><strong>Total listings: </strong>{{listings|length}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
-        <div class="margin-top-bottom-10 row">
+        <hr>
+        <h3>Listings:</h3>
+        <div class="row margin-top-bottom-10 margin-top-20">
             {% for listing in listings %}
             <div class="col-md-2">
                 <div class="text-center">

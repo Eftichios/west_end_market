@@ -151,10 +151,13 @@ def user_profile(request, user_username):
     context_dict = {}
     try:
         user = User.objects.get(username=user_username)
+        profile = UserProfile.objects.get(user=user)
         listings = Listing.objects.filter(user=user)
         context_dict['listings'] = listings
         context_dict['user'] = user
+        context_dict['profile'] = profile
     except User.DoesNotExist:
+        context_dict['profile'] = None
         context_dict['user'] = None
         context_dict['listings'] = None
     return render(request, 'west_end_market/user_profile.html', context_dict)

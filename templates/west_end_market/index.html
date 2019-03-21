@@ -1,12 +1,12 @@
 {% extends 'west_end_market/base.html' %}
 {% load staticfiles %}
 
-<!--<title>
+<title>
     West End Market - 
         {% block title_block %}
-            West End Market Defult
+            Index
         {% endblock %}
-</title>-->
+</title>
 
 {% block body_block %}
 
@@ -15,12 +15,13 @@
     <h5>Recent Listings:</h5>
     <hr>
     
+    <!--  Displays eight most recent listings in two separate lines of four items each  -->
     <div class="text-box item-box-mobile">
         <div class="row">
             {% for listing in listings|slice:"0:4" %}
                 <div class="col-md-3 text-center font-weight-bold">
-                    <a href="{% url 'show_listing' listing.id %}">
-                    {% if listing.title|length > 15 %}
+                    <a class="default-primary-color" href="{% url 'show_listing' listing.id %}">
+                    {% if listing.title|length > 14 %}
                         <label>{{listing.title|slice:"0:14"}}...</label>
                     {% else %}
                         <label>{{listing.title}}</label>
@@ -34,8 +35,8 @@
         <div class="row margin-top-30">
             {% for listing in listings|slice:"4:8" %}
                 <div class="col-md-3 text-center font-weight-bold">
-                    <a href="{% url 'show_listing' listing.id %}">
-                    {% if listing.title|length > 15 %}
+                    <a class="default-primary-color" href="{% url 'show_listing' listing.id %}">
+                    {% if listing.title|length > 14 %}
                         <label>{{listing.title|slice:"0:14"}}...</label>
                     {% else %}
                         <label>{{listing.title}}</label>
@@ -45,8 +46,6 @@
                 </div>
             {% endfor %}
         </div>
-    </div>
-        
-    
+    </div> 
 </div>
 {% endblock %}

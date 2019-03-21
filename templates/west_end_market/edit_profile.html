@@ -30,7 +30,7 @@
                 <h3>Edit Profile</h3>
                 <div class="text-center">
                     {% if profile.picture %}
-                        <img id="id_profile" class="img-thumbnail"  src="{{profile.picture.url}}" alt="image of the item" width=200 height=200>
+                        <img id="id_profile" class="height-240 width-240 round-edges"  src="{{profile.picture.url}}" alt="image of the item" width=200 height=200>
                     {% else %}
                         <img id="id_placeholder" class="img-thumbnail"  src="{% static 'images/profile.jpg' %}" alt="image of the item" width=200 height=200>
                     {% endif %}
@@ -66,20 +66,4 @@
     </form>
     
 </div>
-<script type="text/javascript">
-//previews the photo before upload, called when picture is selected
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function(e) {
-            $('#id_placeholder').attr({'src': e.target.result});
-            $('#id_profile').attr({'src': e.target.result});
-        }
-
-    reader.readAsDataURL(input.files[0]);
-  }
-}
-
-</script>
 {% endblock %}  
