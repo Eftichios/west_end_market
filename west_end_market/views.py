@@ -143,11 +143,11 @@ def show_listing(request, listing_id):
     return render(request, 'west_end_market/listing.html', context_dict)
 
 
-# def shows the listings in a category
-def show_category(request, category_title):
+# shows the listings in a category, uses sort_by to enable sorting functionality, default is sorted by date
+def show_category(request, category_title, sort_by='date'):
     # show all available listings if title is 'all'
     if category_title == 'all':
-        return render(request, 'west_end_market/category_page.html', {'listings': Listing.objects.all(), 'category': 'all'})
+        return render(request, 'west_end_market/category_page.html', {'listings': Listing.objects.all(), 'category': 'all', 'category_name': 'all', "sort_by": sort_by})
     context_dict = {}
     try:
         # get the category and its listings
@@ -155,6 +155,8 @@ def show_category(request, category_title):
         listings = Listing.objects.filter(category=category)
         context_dict["category"] = category
         context_dict["listings"] = listings
+        context_dict["category_name"] = category_title
+        context_dict["sort_by"] = sort_by
     except Category.DoesNotExist:
         context_dict['category'] = None
         context_dict['listings'] = None
@@ -179,20 +181,23 @@ def user_profile(request, user_username):
     return render(request, 'west_end_market/user_profile.html', context_dict)
 
 
-# searches for listings based on a query
-def search_results(request):
+# searches for listings based on a query, uses sort_by to enable sorting functionality, default is sorted by date
+def search_results(request, search=None, sort_by='date'):
     context_dict = {}
     listings = Listing.objects.all()
     results = []
     if request.method == 'POST':
-        context_dict["search"] = request.POST.get("search")
-        # searches the title and description of listings to find the search query
-        for listing in listings:
-            if request.POST.get("search").lower() in listing.title.lower() or request.POST.get("search").lower() in listing.description.lower():
-                results += [listing]
-        context_dict["results"] = results
+        search = request.POST.get("search")
+    if search == "" or search == "all" or search== None:
+        search = "all"
+        results = listings
     else:
-        context_dict["results"] = results
+        for listing in listings:
+            if search.lower() in listing.title.lower() or search.lower() in listing.description.lower():
+                    results += [listing]
+    context_dict["results"] = results
+    context_dict["sort_by"] = sort_by
+    context_dict["search"] = search
     return render(request, 'west_end_market/search_results.html', context_dict)
 
 

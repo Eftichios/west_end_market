@@ -6,11 +6,11 @@
 {% endblock %}
 
 {% block body_block %}
-
+<div class="container text-box text-box-mobile col-md-6 font-weight-bold text-center margin-top-20">
 {% if user == object.user %}
     <form method="post">
       {% csrf_token %}
-        <p>Hey, are you sure you want to delete <strong>{{ object.title }}?</strong></p>
+        <p>Are you sure you want to delete <strong>{{ object.title }}?</strong></p>
       <button type="submit" class="btn btn-danger">Yeap, I'm sure.</button>
         <a class="btn btn-info" href="{% url 'show_listing' object.id %}">No, take me back.</a>
     </form>
@@ -22,4 +22,5 @@
         </button>
     </div>
 {% endif %}
+</div>
 {% endblock %}
