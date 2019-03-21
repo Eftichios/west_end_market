@@ -1,41 +1,48 @@
 from django.test import TestCase
 
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from selenium import webdriver
+from django.core.urlresolvers import reverse
+import os, socket
+
+from django.utils import timezone
+
 from django.core.urlresolvers import reverse
 
+from west_end_market.setuptests import populate, add_category, add_listing, add_comment
+
 from west_end_market.forms import ListingForm, UserForm
-
-# Helper functions - may move to sepearate file later
-
-def create_listings():
-    # List of listings
-    listings = []
-
-    # Create listings
-
-    return listings
+from west_end_market.models import Listing, User
 
 
-def create_user():
-
-def create_comments():
-
+def login(self):
+    self.user = User.objects.create_user(username='testuser', password='12345')
+    login = self.client.login(username='testuser', password='12345')
 
 
 
 class IndexViewTests(TestCase):
 
     def test_index_uses_template(self):
+        # Access the index page
         response = self.client.get(reverse('index'))
+
+        # Checks that index is using the correct template
         self.assertTemplateUsed(response, 'west_end_market/index.html')
+
+        # Also checks that the index is using the base template, as the header implements this
+        self.assertTemplateUsed(response, 'west_end_market/base.html')
+
     
-    def test_index_shows_newest_listings(self):
+    def test_index_content(self):
         # Access index with empty database
         response = self.client.get(reverse('index'))
 
         # Context dictionary is then empty
         self.assertCountEqual(response.context['listings'], [])
 
-        listings = test_utils.create_listings()
+        #listings = create_listings()
+        populate()
 
         # Access index with database filled
         response = self.client.get(reverse('index'))
@@ -46,74 +53,119 @@ class IndexViewTests(TestCase):
         # Check context dictionary filled
         self.assertCountEqual(response.context['listings'], listings)
 
-        
-    def test_index_displays_eight_newest_listings(self):
-        # Create listings
-        create_listings()
 
-        # Access index
-        response = self.client.get(reverse('index'))
-
-    def test_add_listing_form_is_displayed_correctly(self):
-        # Access the add_listing page
-        response = self.client.get(reverse('add_listing'))
-        
-        # Check that the form in the response context is an instance of ListingForm
-        self.assertTrue(isinstance(response.context['form'], ListingForm))
-        
-        # Check that the form is being displayed correctly
-        # Header
-        self.assertTrue('<h3>Create a Listing</h3>'.lower(), response.content.decode('ascii').lower())
-
-        #Buttons
-        self.assertTrue('type="submit" value="submit" >Create'.lower(), response.content.decode('ascii').lower())
-        self.assertTrue('type="submit" value="submit" disabled>Update'.lower(), response.content.decode('ascii').lower())
+##    def test_index_displays_newest_listings(self):
+##        populate()
+##
+##        response = self.client.get(reverse('index'))
+##
+##        self.assertIn("CHECK FOR EACH OF THE NEWEST LISTINGS*".lower(), response.content.decode('ascii'))
 
 
-    def test_logged_in_users_can_add_listings(self):
-        # log in
-        # go to add listing page
-        # fill out form?
+##    def test_add_listing_form_is_displayed_correctly(self):
+##        # Access the add_listing page
+##        response = self.client.get(reverse('add_listing'))
+##        
+##        # Check that the form in the response context is an instance of ListingForm
+##        self.assertTrue(isinstance(response.context['form'], ListingForm))
+##        
+##        # Check that the form is being displayed correctly
+##        # Header
+##        self.assertTrue('<h3>Create a Listing</h3>'.lower(), response.content.decode('ascii').lower())
+##
+##        #Buttons
+##        self.assertTrue('type="submit" value="submit" >Create'.lower(), response.content.decode('ascii').lower())
+##        self.assertTrue('type="submit" value="submit" disabled>Update'.lower(), response.content.decode('ascii').lower())
 
-    def test_users_not_logged_in_can_not_add_listings(self):
-        #
-        response = self.client.get(reverse('add_listings'))
-        self.assertIn('Only user that are logged in can add listings'.lower(), response.content.decode('ascii').lower())
-        
 
-    def test_listing_is_saved_correctly(self):
+##    def test_logged_in_users_can_add_listings(self):
+##        login()
+##        # go to add listing page
+##        # fill out form?
+
+
+##    def test_users_not_logged_in_can_not_add_listings(self):
+##        populate()
+##        url = self.live_server_url
+##        url = url.replace('localhost', '127.0.0.1')
+##        self.browser.get(url + reverse('add_listing'))
+##        self.assertEquals(self.browser.current_url, reverse('user_login'))
+##        #self.assertIn('Only user that are logged in can add listings'.lower(), response.content.decode('ascii').lower())
+
+
+##    def test_logged_in_users_can_add_comments(self):
+##        populate()
+##        login()
+##        # go to a listing page
+##        # fill out comment form and submit
+##        # check that the information we just submitted can be found on the listing page
+
+
+##    def test_users_not_logged_in_can_not_add_comments(self):
+##        populate()
+##        # log in
+##        # go to a listing page
+##        # fill out comment form and submit
+##        # check that the information we just submitted can be found on the listing page
+
 
     def test_username_is_displayed_on_index_when_logged_in(self):
-        # login
+        login(self)
         response = self.client.get(reverse('index'))
-        self.assertIn('Hello, [username]'.lower(), response.content.decode('ascii').lower())
+        self.assertIn('Welcome, testuser!'.lower(), response.content.decode('ascii').lower())
+
 
     def test_guest_is_displayed_on_index_when_not_logged_in(self):
         response = self.client.get(reverse('index'))
-        self.assertIn('Hello, Guest'.lower(), response.content.decode('ascii').lower())
+        self.assertIn('Welcome!'.lower(), response.content.decode('ascii').lower())
+
 
     def test_message_when_looking_for_category_that_does_not_exist(self):
-        # create categories
-        response = self.client.get(reverse('category', args=['notacategory']))
-        self.assertIn("Category has no listings".lower(), response.content.decode('ascii').lower())
+        populate()
+        response = self.client.get(reverse('show_category', args=['notacategory']))
+        self.assertIn("There is no such category. Please check the url and try again!".lower(), response.content.decode('ascii').lower())
 
-    def test_message_when_category_has_no_listings(self):
-        # create category with no listings
-        response = self.client.get(reverse('category', args=['school']))
-        self.assertIn("Category has no listings".lower(), response.content.decode('ascii').lower())
 
-    def test_message_when_looking_for_listing_that_does_not_exist(self):
-        response = self.client.get(reverse('listing', args=['999']))
-        self.assertIn("Listing does not exist".lower(), response.content.decode('ascii').lower())
+##    def test_message_when_category_has_no_listings(self):
+##        populate()
+##        response = self.client.get(reverse('category', args=['school']))
+##        self.assertIn("Category has no listings".lower(), response.content.decode('ascii').lower())
+
+
+##    def test_message_when_looking_for_listing_that_does_not_exist(self):
+##        populate()
+##        response = self.client.get(reverse('show_listing', args=['999']))
+##        self.assertIn("Listing does not exist".lower(), response.content.decode('ascii').lower())
+
 
     def test_message_when_looking_for_user_that_does_not_exist(self):
-        response = self.client.get(reverse('listing', args=['notauser']))
-        self.assertIn("User does not exist".lower(), response.content.decode('ascii').lower())
+        populate()
+        response = self.client.get(reverse('user_profile', args=['notauser']))
+        self.assertIn("There is no such user. Please check the url and try again!".lower(), response.content.decode('ascii').lower())
+
 
     def test_message_when_user_has_no_listings(self):
-        # create user with no listings
-        response = self.client.get(reverse('user_profile', args=['testuser']))
-        self.assertIn("User has no listings".lower(), response.content.decode('ascii').lower())
+        populate()
+        response = self.client.get(reverse('user_profile', args=['userNoListings']))
+        self.assertIn("This user currently has no listings!".lower(), response.content.decode('ascii').lower())
+
+
+    def test_user_can_view_all_listings_from_a_single_user(self):
+        #
+        populate()
+
+        # Retrieve categories and pages from database
+        user = User.objects.get(username='JohnPope')
+        userlistings = Listing.objects.filter(user=user)
+
+        response = self.client.get(reverse('user_profile', args=['JohnPope']))
+
+        # Check context dictionary filled
+        self.assertCountEqual(response.context['listings'], userlistings)
+
+
+##    def test_message_when_search_has_no_results(self):
+        
         
 
 

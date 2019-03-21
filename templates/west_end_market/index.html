@@ -11,7 +11,11 @@
 {% block body_block %}
 
 <div class="container margin-top-30 content">
-    <h2>Welcome!</h2>
+    {% if user.is_authenticated %}
+		<h2>Welcome, {{ user.username }}!</h2>
+	{% else %}
+		<h2>Welcome!</h2>
+	{% endif %}
     <h5>Recent Listings:</h5>
     <hr>
     
