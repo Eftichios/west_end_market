@@ -6,20 +6,22 @@
 {% endblock %}
 
 {% block body_block %}
-                <div>
-                    {% if user_form.errors%}
-                        {% for error in user_form %}
-                            {% for r in error.errors %}
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                <span>{{r}}</span>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span class="reduce-size align-text-top" aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            {% endfor %}
-                        {% endfor %}
-                    {% endif %}
-                </div>
+{% if edited %}
+    <div class="alert alert-success" role="alert">
+        <span>&#10004; You have successfully update your profile!</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span class="reduce-size align-text-top" aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% else %}
+    <div class="alert alert-danger" role="alert">
+        <span>&#10008; Invalid details. Profile not updated!</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span class="reduce-size align-text-top" aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}
+              
 <div class="container margin-top-30">
     <form id="edit_profile_form" method = 'post' enctype="multipart/form-data" action="{% url 'edit_profile' %}">
         {% csrf_token %}
@@ -41,7 +43,7 @@
                 </div>
             </div>
 
-            <div class="col-md-8">
+            <div class="text-box text-box-mobile col-md-8 margin-top-50">
                 <div class="form-group font-weight-bold">
                     <label>Username</label>
                     <input required id="id_username" type="text" class="form-control font-italic" value ="{{user.username}}" name="username">

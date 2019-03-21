@@ -181,24 +181,28 @@ def my_account(request):
 
 @login_required
 def edit_profile(request):
+    edited = False
     user = request.user
     try:
         profile = UserProfile.objects.get(user=user)
     except UserProfile.DoesNotExist:
         profile = None
-    if request.method == 'POST' and user and profile:
+    if request.method == 'POST':
         user.username = request.POST.get("username")
         user.set_password = request.POST.get("password")
         user.email = request.POST.get("email")
-        profile.picture = request.FILES.get("picture")
+        if request.FILES.get("picture"):
+            profile.picture = request.FILES.get("picture")
+            profile.save()
         user.save()
-        profile.save()
+        edited = True
 
-    return render(request, 'west_end_market/edit_profile.html', {'user': user, 'profile': profile})
+    return render(request, 'west_end_market/edit_profile.html', {'user': user, 'profile': profile, 'edited': edited})
 
 
 @login_required
 def edit_listing(request, listing_id):
+    edited = False
     listing = Listing.objects.get(id=listing_id)
     if request.method == 'POST' and listing:
         listing.title = request.POST.get("title")
@@ -209,8 +213,9 @@ def edit_listing(request, listing_id):
         listing.postcode = request.POST.get("postcode")
         listing.date = timezone.now()
         listing.save()
+        edited = True
 
-    return render(request, 'west_end_market/edit_listing.html', {"listing": listing})
+    return render(request, 'west_end_market/edit_listing.html', {"listing": listing, 'edited': edited})
 
 
 def cookie_policy(request):

@@ -6,11 +6,19 @@
 {% endblock %}
 
 {% block body_block %}
+{% if edited %}
+    <div class="alert alert-success" role="alert">
+        <span>&#10004; You have successfully update your profile!</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span class="reduce-size align-text-top" aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}
 <div class="container margin-top-20">
     <form id="edit_listing_form" method = 'post' enctype="multipart/form-data" action="{% url 'edit_listing' listing.id %}">{% csrf_token %}
             <div class="row">
                 <div class="col-md-12 text-center margin-bottom-20">
-                    <input required id="id_title" type="text" class="form-control font-italic" value ="{{listing.title}}" name="title">
+                    <h3 class="text-capitalize">Title: {{listing.title}}</h3>
                 </div>
             </div>
             <div class="row">
@@ -31,17 +39,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-box col-md-9">
-                    <div class="row">
-                        <p><strong>Description: </strong><textarea required id="id_description" placeholder="{{listing.description}}" class="form-control font-italic" name="description"></textarea></p>
-                    </div>
-                    <div class="row">
-                        <p><strong>Price: </strong>£<input required id="id_price" type="text" class="form-control font-italic" value ="{{listing.price}}" name="price"></p>
-                    </div>
-                    <div class="row">
-                        <p><strong>Postcode: </strong><input required id="id_postcode" type="text" class="form-control font-italic" value ="{{listing.postcode}}" name="postcode"></p>
-                    </div>
-                    <div class="row">
+                <div class="text-box text-box-mobile col-md-8">
+                    <p><strong>Description: </strong><textarea required id="id_description" placeholder="{{listing.description}}" class="form-control font-italic" name="description"></textarea></p>
+                    <p><strong>Price: </strong>£<input required id="id_price" type="text" class="form-control font-italic" value ="{{listing.price}}" name="price"></p>
+                    <p><strong>Postcode: </strong><input required id="id_postcode" type="text" class="form-control font-italic" value ="{{listing.postcode}}" name="postcode"></p>
+                    <hr>
+                    <div class="row padding-right-20">   
+                        <hr>
                         <p><button class="btn btn-primary" type="submit" value="submit">Update listing</button></p>
                     </div>
                 </div>
