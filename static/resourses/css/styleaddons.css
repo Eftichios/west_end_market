@@ -208,6 +208,10 @@ h2 {
     height: 240px;
 }
 
+.margin-20 {
+    margin: 20px;
+}
+
 .margin-right-20 {
     margin-right: 20px;
 }
@@ -253,6 +257,10 @@ h2 {
         object-fit: cover;
         vertical-align: middle;
         margin-bottom: 10px;
+    }
+    
+    .padding-box-80 {
+    padding: 0px 80px;
     }
 }
 
@@ -325,4 +333,7 @@ h2 {
   .modal-content {
     width: 100%;
   }
+}
+.font-size-inc {
+    font-size: 140%;
 }
