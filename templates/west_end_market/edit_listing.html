@@ -16,16 +16,16 @@
 {% endif %}
 <div class="container margin-top-20">
     <form id="edit_listing_form" method = 'post' enctype="multipart/form-data" action="{% url 'edit_listing' listing.id %}">{% csrf_token %}
-            <div class="row">
-                <div class="col-md-12 text-center margin-bottom-20">
-                    <h3 class="text-capitalize">Title: <input id="id_title" value="{{listing.title}}" name="title"></h3>
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h3>{{listing.title}}</h3>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 margin-top-20">
                     <div class="margin-bottom-20 text-center">
                         <div class="container">
-                            <img id="myImg" src="{{listing.picture.url}}" class="height-240 width-240 round-edges" alt="image of the item">
+                            <img id="id_profile" src="{{listing.picture.url}}" class="height-240 width-240 round-edges" alt="image of the item">
                             <div class="form-group text-center font-weight-bold ">
                                 <label>Upload Image</label>
                                 <input value="{{listing.picture}}" id="id_picture" type="file" name="picture" onchange="readURL(this);">
@@ -39,7 +39,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-box text-box-mobile col-md-8">
+                <div class="text-box text-box-mobile col-md-8 margin-top-20 margin-20">
+                    <p><strong>Title: </strong><input required id="id_postcode" type="text" class="form-control font-italic" value ="{{listing.title}}" name="title">
                     <p><strong>Description: </strong><textarea required id="id_description" placeholder="{{listing.description}}" class="form-control font-italic" name="description"></textarea></p>
                     <p><strong>Price: </strong>£<input required id="id_price" type="text" class="form-control font-italic" value ="{{listing.price}}" name="price"></p>
                     <p><strong>Postcode: </strong><input required id="id_postcode" type="text" class="form-control font-italic" value ="{{listing.postcode}}" name="postcode"></p>
@@ -52,19 +53,4 @@
             </div>
     </form>
 </div>
-<script type="text/javascript">
-//previews the photo before upload, called when picture is selected
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function(e) {
-            $('#myImg').attr({'src': e.target.result});
-        }
-
-    reader.readAsDataURL(input.files[0]);
-  }
-}
-
-</script>
 {% endblock %}

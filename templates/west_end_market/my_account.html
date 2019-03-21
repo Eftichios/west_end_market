@@ -13,9 +13,9 @@
                 <h3>{{user.username}}</h3>
                 <div class="text-center">
                     {% if profile.picture %}
-                        <img id="id_profile" class="img-thumbnail"  src="{{profile.picture.url}}" alt="image of the item" width=200 height=200>
+                        <img id="id_profile" class="img-thumbnail"  src="{{profile.picture.url}}" alt="profile picture" width=200 height=200>
                     {% else %}
-                        <img id="id_placeholder" class="img-thumbnail"  src="{% static 'images/profile.jpg' %}" alt="image of the item" width=200 height=200>
+                        <img id="id_placeholder" class="img-thumbnail"  src="{% static 'images/profile.jpg' %}" alt="placeholder picture" width=200 height=200>
                     {% endif %}
                 </div>
 
