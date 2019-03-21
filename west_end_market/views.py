@@ -58,6 +58,10 @@ def register(request):
 
 
 def user_login(request):
+
+    # redirect logged-in users to the home page if they try to access the login page
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('index'))
     success = True
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -72,7 +76,7 @@ def user_login(request):
                 return HttpResponse("Your West End Market account is disabled.")
         else:
             success = False
-            return render(request,'west_end_market/loginpage.html', {"success": success})
+            return render(request, 'west_end_market/loginpage.html', {"success": success})
 
     else:
         return render(request, 'west_end_market/loginpage.html', {"success": success})
