@@ -12,6 +12,9 @@
             <h4 class="text-capitalize">Category: {{category}}</h4>
             <hr>
         </div>
+        <div>
+            <button onclick="topFunction()" id="scrollBtn" title="Go to top"><strong>&#8593;</strong></button>
+        </div>
 
         {% for listing in listings %}
         <div class="row margin-top-10">
@@ -34,6 +37,9 @@
                 </div>
                 <div class="row">
                     <span><strong>User: </strong><a class="text-decoration-none" href="{% url 'user_profile' listing.user.username %}">{{listing.user.username}}</a></span>
+                </div>
+                <div class="row">
+                    <span><strong>Date: </strong>{{listing.date.date}}</span>
                 </div>
             </div>
         </div>

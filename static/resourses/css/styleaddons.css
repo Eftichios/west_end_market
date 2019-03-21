@@ -142,6 +142,27 @@ h2 {
         align-self: center;
     }
 }
+    #scrollBtn {
+      display: none; /* Hidden by default */
+      position: fixed; /* Fixed/sticky position */
+      bottom: 30px; /* Place the button at the bottom of the page */
+      right: 30px; /* Place the button 30px from the right */
+      z-index: 99; /* Make sure it does not overlap */
+      border: none; /* Remove borders */
+      outline: none; /* Remove outline */
+      background-color: rgba(175, 175, 175, 0.8); /* Set a background color */
+      color: #000000; /* Text color */
+      cursor: pointer; /* Add a mouse pointer on hover */
+      padding: 10px 25px; /* Some padding */
+      border-radius: 10px; /* Rounded corners */
+      font-size: 32px; /* Increase font size */
+    }
+
+    #scrollBtn:hover {
+      background-color: rgba(106, 106, 106, 0.77); /* Add a dark-grey background on hover */
+        transition: 1s;
+    }
+
 
 /* --------------------------------------------------- */
 /* DIFFERENT MARGIN/PADDING/WIDTH CLASSES */

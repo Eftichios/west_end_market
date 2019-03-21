@@ -90,6 +90,7 @@
             <!-- DUMMY FOOTER TEXT -->
             <div class="footer-content">
                 <p class="text-center text-secondary"><strong><a class="text-secondary" href="{% url 'index' %}">Home</a> | Privacy Policy | <a class="text-secondary" href="mailto:gla.westendmarket@gmail.com">Contact</a> | &copy; West End Market 2019</strong></p>
+                <p class="text-center text-secondary"><strong><a class="text-secondary" href="{% url 'index' %}">Home</a> | Cookie Policy | <a class="text-secondary" href="mailto:gla.westendmarket@gmail.com">Contact</a> | &copy; West End Market 2019</strong></p>
             </div>
         </footer>        
         
@@ -100,41 +101,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="{% static 'vendors/js/bootstrap.js' %}"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
-        <script>
-            var modal = document.getElementById('myModal');
-            var img = document.getElementById('myImg');
-            var modalImg = document.getElementById("img01");
-            var captionText = document.getElementById("caption");
-            img.onclick = function(){
-                modal.style.display = "block";
-                modalImg.src = this.src;
-                captionText.innerHTML = this.alt;
-            }
-            var span = document.getElementsByClassName("close")[0];
-
-            span.onclick = function() { 
-            modal.style.display = "none";
-            }
-        </script>
-        <script>
-            window.addEventListener("load", function(){
-            window.cookieconsent.initialise({
-              "palette": {
-                "popup": {
-                  "background": "#060606",
-                  "text": "#ffffff"
-                },
-                "button": {
-                  "background": "#ff5722",
-                  "text": "#ffffff"
-                }
-              },
-              "theme": "classic",
-              "content": {
-                "message": "We use cookies to ensure you get the best experience on our website.",
-                "href": "#"
-              }
-            })});
-        </script>
+        <script type="text/javascript" src="{% static 'vendors/js/cookiepopup.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendors/js/modalimage.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendors/js/scrolluparrow.js' %}"></script>
     </body>
 </html>

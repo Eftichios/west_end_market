@@ -12,6 +12,7 @@ from west_end_market.models import Category, Listing, Comment, User
 
 def populate():
 
+    # dummy users
     users = {"user_1": {"username": "JohnPope", "email": "JohnPope@email.com"},
              "user_2": {"username": "ChristopherSmith", "email": "ChristopherSmith@email.com"},
              "user_3": {"username": "PeterBrown", "email": "PeterBrown@email.com"},
@@ -21,6 +22,7 @@ def populate():
              "user_7": {"username": "Victor", "email": "Victor@email.com"},
              "user_8": {"username": "Batman", "email": "Batman@email.com"}}
 
+    # dummy categories with listings
     school = [{"id": "sch1",
                      "title": "Introduction to Linear Algebra",
                      "description": "Used book but in very good condition",
@@ -208,6 +210,7 @@ def populate():
             "sports": {"listings": sports, "total": len(sports)},
             "other": {"listings": other, "total": len(other)}}
 
+    # dummy comments
     comments = {"sch1": [{"comment": "I am interested!", "user": "Maria"},
                          {"comment": "Hey Maria, you can send me an email so we can discuss the details", "user": "JohnPope"}],
                 "sch2": [{"comment": "Just send you an email", "user": "Veronica"},
@@ -246,10 +249,14 @@ def populate():
                          {"comment": "Another comment on others item 3", "user": "Batman"}]
                 }
 
+    # creates dummy users
     for user, user_data in users.items():
         u = User.objects.get_or_create(username=user_data["username"], email=user_data["email"])[0]
+        # all dummy users will have the same password for testing
+        u.set_password("test123")
         u.save()
 
+    # creates categories, listings and comments
     for cat, cat_data in cats.items():
         c = add_category(cat, cat_data["total"])
         for l in cat_data["listings"]:
@@ -260,6 +267,7 @@ def populate():
                     u = User.objects.get(username=com["user"])
                     add_comment(com["comment"], u, a)
 
+    # prints to the console the listings that were created
     for c in Category.objects.all():
         for l in Listing.objects.filter(category=c):
             print("- {0} - {1}".format(str(c), str(l)))

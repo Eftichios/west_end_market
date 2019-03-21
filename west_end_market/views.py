@@ -117,6 +117,7 @@ def show_listing(request, listing_id):
         context_dict['listing'] = None
         context_dict['comments'] = None
     context_dict["form"] = form
+    context_dict["user"] = request.user
     return render(request, 'west_end_market/listing.html', context_dict)
 
 
@@ -167,15 +168,21 @@ def search_results(request):
 def my_account(request):
     user = request.user
     listings = Listing.objects.filter(user=user)
-    profile = UserProfile.objects.get(user=user)
+    try:
+        profile = UserProfile.objects.get(user=user)
+    except UserProfile.DoesNotExist:
+        profile = None
     return render(request, 'west_end_market/my_account.html', {'listings':listings, 'user': user, 'profile': profile})
 
 
 @login_required
 def edit_profile(request):
     user = request.user
-    profile = UserProfile.objects.get(user=user)
-    if request.method == 'POST':
+    try:
+        profile = UserProfile.objects.get(user=user)
+    except UserProfile.DoesNotExist:
+        profile = None
+    if request.method == 'POST' and user and profile:
         user.username = request.POST.get("username")
         user.set_password = request.POST.get("password")
         user.email = request.POST.get("email")
@@ -184,3 +191,19 @@ def edit_profile(request):
         profile.save()
 
     return render(request, 'west_end_market/edit_profile.html', {'user': user, 'profile': profile})
+
+
+@login_required
+def edit_listing(request, listing_id):
+    listing = Listing.objects.get(id=listing_id)
+    if request.method == 'POST' and listing:
+        listing.title = request.POST.get("title")
+        listing.description = request.POST.get("description")
+        listing.price = request.POST.get("price")
+        if request.FILES.get("picture"):
+            listing.picture = request.FILES.get("picture")
+        listing.postcode = request.POST.get("postcode")
+        listing.date = timezone.now()
+        listing.save()
+
+    return render(request, 'west_end_market/edit_listing.html', {"listing": listing})
