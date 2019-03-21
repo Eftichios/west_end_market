@@ -132,10 +132,10 @@ class IndexViewTests(TestCase):
 ##        self.assertIn("Category has no listings".lower(), response.content.decode('ascii').lower())
 
 
-##    def test_message_when_looking_for_listing_that_does_not_exist(self):
-##        populate()
-##        response = self.client.get(reverse('show_listing', args=['999']))
-##        self.assertIn("Listing does not exist".lower(), response.content.decode('ascii').lower())
+    def test_message_when_looking_for_listing_that_does_not_exist(self):
+        populate()
+        response = self.client.get(reverse('show_listing', args=['999']))
+        self.assertIn("There is no such listing. Please check the url and try again!".lower(), response.content.decode('ascii').lower())
 
 
     def test_message_when_looking_for_user_that_does_not_exist(self):

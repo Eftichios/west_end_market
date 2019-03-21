@@ -75,7 +75,8 @@
                 </div>
             </div>
         {% else %}
-            There is no such listing! :(
+            <div class="alert alert-danger" role="alert">
+				<span>&#10004; There is no such listing. Please check the url and try again!</span>
         {% endif %}
 </div>   
 {% endblock %}

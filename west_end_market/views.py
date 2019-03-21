@@ -114,6 +114,7 @@ def show_listing(request, listing_id):
             try:
                 listing = Listing.objects.get(id=listing_id)
                 form = CommentForm(request.POST)
+                context_dict["form"] = form
                 if form.is_valid():
                     comment = form.save(commit=False)
                     comment.listing = listing
@@ -122,12 +123,13 @@ def show_listing(request, listing_id):
                     return HttpResponseRedirect(reverse('show_listing', args=(listing_id,)))
             except Listing.DoesNotExist:
                 form = None
+                context_dict["form"] = form
         else:
             form = CommentForm()
+            context_dict["form"] = form
     except Listing.DoesNotExist:
         context_dict['listing'] = None
         context_dict['comments'] = None
-    context_dict["form"] = form
     context_dict["user"] = request.user
     return render(request, 'west_end_market/listing.html', context_dict)
 
