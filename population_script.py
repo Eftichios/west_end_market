@@ -275,6 +275,9 @@ def populate():
             print("- {0} - {1}".format(str(c), str(l)))
 
 
+'''functions to save the models to the database'''
+
+
 def add_category(name, listings):
     c = Category.objects.get_or_create(name=name, listings=listings)[0]
     c.save()

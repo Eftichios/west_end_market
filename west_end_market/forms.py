@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from west_end_market.models import Listing, Category, UserProfile, Comment
 
+'''Forms for the relevant models'''
+
 
 class ListingForm(forms.ModelForm):
     category = forms.ModelChoiceField(queryset=Category.objects.all())

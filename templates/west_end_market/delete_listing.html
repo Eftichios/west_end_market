@@ -1,0 +1,25 @@
+{% extends 'west_end_market/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Delete listing
+{% endblock %}
+
+{% block body_block %}
+
+{% if user == object.user %}
+    <form method="post">
+      {% csrf_token %}
+        <p>Hey, are you sure you want to delete <strong>{{ object.title }}?</strong></p>
+      <button type="submit" class="btn btn-danger">Yeap, I'm sure.</button>
+        <a class="btn btn-info" href="{% url 'show_listing' object.id %}">No, take me back.</a>
+    </form>
+{% else %}
+    <div class="alert alert-danger" role="alert">
+        <span>&#10008;You have no permission to delete this listing. Click <a href="{% url 'index' %}">here</a> to return to the home page</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span class="reduce-size align-text-top" aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}
+{% endblock %}

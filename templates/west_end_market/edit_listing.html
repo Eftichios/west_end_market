@@ -6,51 +6,60 @@
 {% endblock %}
 
 {% block body_block %}
-{% if edited %}
-    <div class="alert alert-success" role="alert">
-        <span>&#10004; You have successfully update your profile!</span>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span class="reduce-size align-text-top" aria-hidden="true">&times;</span>
-        </button>
-    </div>
-{% endif %}
-<div class="container margin-top-20">
-    <form id="edit_listing_form" method = 'post' enctype="multipart/form-data" action="{% url 'edit_listing' listing.id %}">{% csrf_token %}
-            <div class="row text-center">
-                <div class="col-md-12">
-                    <h3>{{listing.title}}</h3>
+{% if user == listing.user %}
+    {% if edited %}
+        <div class="alert alert-success" role="alert">
+            <span>&#10004; You have successfully update your profile!</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span class="reduce-size align-text-top" aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+    <div class="container margin-top-20">
+        <form id="edit_listing_form" method = 'post' enctype="multipart/form-data" action="{% url 'edit_listing' listing.id %}">{% csrf_token %}
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <h3>{{listing.title}}</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 margin-top-20">
-                    <div class="margin-bottom-20 text-center">
-                        <div class="container">
-                            <img id="id_profile" src="{{listing.picture.url}}" class="height-240 width-240 round-edges" alt="image of the item">
-                            <div class="form-group text-center font-weight-bold ">
-                                <label>Upload Image</label>
-                                <input value="{{listing.picture}}" id="id_picture" type="file" name="picture" onchange="readURL(this);">
-                                <br>
-                                <p class="text-left helptext">Only png and jpg allowed</p>
-                            </div>
-                            <div id="myModal" class="modal">
-                                <span class="close">&times;</span>
-                                <img class="modal-content" id="img01">
+                <div class="row">
+                    <div class="col-md-3 margin-top-20">
+                        <div class="margin-bottom-20 text-center">
+                            <div class="container">
+                                <img id="id_profile" src="{{listing.picture.url}}" class="height-240 width-240 round-edges" alt="image of the item">
+                                <div class="form-group text-center font-weight-bold ">
+                                    <label>Upload Image</label>
+                                    <input value="{{listing.picture}}" id="id_picture" type="file" name="picture" onchange="readURL(this);">
+                                    <br>
+                                    <p class="text-left helptext">Only png and jpg allowed</p>
+                                </div>
+                                <div id="myModal" class="modal">
+                                    <span class="close">&times;</span>
+                                    <img class="modal-content" id="img01">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="text-box text-box-mobile col-md-8 margin-top-20 margin-20">
-                    <p><strong>Title: </strong><input required id="id_postcode" type="text" class="form-control font-italic" value ="{{listing.title}}" name="title">
-                    <p><strong>Description: </strong><textarea required id="id_description" placeholder="{{listing.description}}" class="form-control font-italic" name="description"></textarea></p>
-                    <p><strong>Price: </strong>£<input required id="id_price" type="text" class="form-control font-italic" value ="{{listing.price}}" name="price"></p>
-                    <p><strong>Postcode: </strong><input required id="id_postcode" type="text" class="form-control font-italic" value ="{{listing.postcode}}" name="postcode"></p>
-                    <hr>
-                    <div class="row padding-right-20">   
+                    <div class="text-box text-box-mobile col-md-8 margin-top-20 margin-20">
+                        <p><strong>Title: </strong><input required id="id_postcode" type="text" class="form-control font-italic" value ="{{listing.title}}" name="title">
+                        <p><strong>Description: </strong><textarea required id="id_description" placeholder="{{listing.description}}" class="form-control font-italic" name="description"></textarea></p>
+                        <p><strong>Price: </strong>£<input required id="id_price" type="text" class="form-control font-italic" value ="{{listing.price}}" name="price"></p>
+                        <p><strong>Postcode: </strong><input required id="id_postcode" type="text" class="form-control font-italic" value ="{{listing.postcode}}" name="postcode"></p>
                         <hr>
-                        <p><button class="btn btn-primary" type="submit" value="submit">Update listing</button></p>
+                        <div class="row padding-right-20">
+                            <hr>
+                            <p><button class="btn btn-primary" type="submit" value="submit">Update listing</button></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-    </form>
-</div>
+        </form>
+    </div>
+{% else %}
+        <div class="alert alert-danger" role="alert">
+            <span>&#10008; You have no permission to edit this listing. Click <a href="{% url 'index' %}">here</a> to return to the home page</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span class="reduce-size align-text-top" aria-hidden="true">&times;</span>
+            </button>
+        </div>
+{% endif %}
 {% endblock %}

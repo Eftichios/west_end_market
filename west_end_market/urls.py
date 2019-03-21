@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^search_results/$', views.search_results, name='search_results'),
     url(r'^category/(?P<category_title>[\w\-]+)/$', views.show_category, name='show_category'),
     url(r'^edit_listing/(?P<listing_id>[\w\-]+)/$', views.edit_listing, name='edit_listing'),
+    url(r'^delete_listing/(?P<pk>[\w\-]+)/$', views.ListingDelete.as_view(), name='delete_listing'),
     url(r'^cookie_policy/$', views.cookie_policy, name="cookie_policy"),
     url(r'^login/', include('social_django.urls', namespace='social')),  #google/facebook
 ]
