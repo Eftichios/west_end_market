@@ -207,3 +207,7 @@ def edit_listing(request, listing_id):
         listing.save()
 
     return render(request, 'west_end_market/edit_listing.html', {"listing": listing})
+
+
+def cookie_policy(request):
+    return render(request, 'west_end_market/cookie_policy.html',{})
