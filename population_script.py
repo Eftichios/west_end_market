@@ -7,20 +7,20 @@ import django
 django.setup()
 
 
-from west_end_market.models import Category, Listing, Comment, User
+from west_end_market.models import Category, Listing, Comment, User, UserProfile
 
 
 def populate():
 
     # dummy users
-    users = {"user_1": {"username": "JohnPope", "email": "JohnPope@email.com"},
-             "user_2": {"username": "ChristopherSmith", "email": "ChristopherSmith@email.com"},
-             "user_3": {"username": "PeterBrown", "email": "PeterBrown@email.com"},
-             "user_4": {"username": "James", "email": "James@email.com"},
-             "user_5": {"username": "Veronica", "email": "Veronica@email.com"},
-             "user_6": {"username": "Maria", "email": "Maria@email.com"},
-             "user_7": {"username": "Victor", "email": "Victor@email.com"},
-             "user_8": {"username": "Batman", "email": "Batman@email.com"}}
+    users = {"user_1": {"username": "JohnPope", "email": "JohnPope@email.com", "picture":"JohnPope/profile.jpg"},
+             "user_2": {"username": "ChristopherSmith", "email": "ChristopherSmith@email.com", "picture":"ChristopherSmith/profile.jpg"},
+             "user_3": {"username": "PeterBrown", "email": "PeterBrown@email.com", "picture":"PeterBrown/profile.jpg"},
+             "user_4": {"username": "James", "email": "James@email.com", "picture":"James/profile.jpg"},
+             "user_5": {"username": "Veronica", "email": "Veronica@email.com", "picture":"Veronica/profile.jpg"},
+             "user_6": {"username": "Maria", "email": "Maria@email.com", "picture":"Maria/profile.jpg"},
+             "user_7": {"username": "Victor", "email": "Victor@email.com", "picture":"Victor/profile.jpg"},
+             "user_8": {"username": "Batman", "email": "Batman@email.com", "picture": "Batman/profile.jpg"}}
 
     # dummy categories with listings
     school = [{"id": "sch1",
@@ -253,7 +253,9 @@ def populate():
     for user, user_data in users.items():
         u = User.objects.get_or_create(username=user_data["username"], email=user_data["email"])[0]
         # all dummy users will have the same password for testing
+        profile = UserProfile.objects.get_or_create(user=u, picture=user_data["picture"])[0]
         u.set_password("test123")
+        profile.save()
         u.save()
 
     # creates categories, listings and comments

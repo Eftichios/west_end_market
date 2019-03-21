@@ -13,7 +13,7 @@ window.addEventListener("load", function(){
         "theme": "classic",
         "content": {
             "message": "We use cookies to ensure you get the best experience on our website.",
-            "href": "#"
+            "href": "/west_end_market/cookie_policy/"
         }
     })
 });
