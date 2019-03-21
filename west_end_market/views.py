@@ -24,6 +24,8 @@ def add_listing(request):
             listing.picture = form.cleaned_data['picture']
             listing.user = request.user
             setattr(listing.category, 'listings', listing.category.listings+1)
+
+            # id is the first 3 letters of the category and previous number plus 1
             listing.id = listing.category.name[0:3] + str(listing.category.listings)
             listing.category.save()
             listing.date = timezone.now()
@@ -38,6 +40,11 @@ def add_listing(request):
 def register(request):
     registered = False
     if request.method == 'POST':
+        if len(request.POST.get("password")) < 6:
+            user_form = UserForm()
+            profile_form = UserProfileForm()
+            return render(request, 'west_end_market/register.html',
+                          {'user_form': user_form, 'profile_form': profile_form, 'registered': registered,'password_short':True})
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileForm(request.POST, request.FILES)
 
@@ -102,7 +109,7 @@ def show_listing(request, listing_id):
         comments = Comment.objects.filter(listing=listing)
         context_dict['comments'] = comments
         context_dict['listing'] = listing
-        # if user is logged in then they can comment
+        # if user is logged in then they can see the form for comments
         if request.method == "POST":
             try:
                 listing = Listing.objects.get(id=listing_id)
@@ -159,6 +166,7 @@ def search_results(request):
     results = []
     if request.method == 'POST':
         context_dict["search"] = request.POST.get("search")
+        # searches the title and description of listings to find the search query
         for listing in listings:
             if request.POST.get("search").lower() in listing.title.lower() or request.POST.get("search").lower() in listing.description.lower():
                 results += [listing]
@@ -176,7 +184,7 @@ def my_account(request):
         profile = UserProfile.objects.get(user=user)
     except UserProfile.DoesNotExist:
         profile = None
-    return render(request, 'west_end_market/my_account.html', {'listings':listings, 'user': user, 'profile': profile})
+    return render(request, 'west_end_market/my_account.html', {'listings': listings, 'user': user, 'profile': profile})
 
 
 @login_required
@@ -188,8 +196,11 @@ def edit_profile(request):
     except UserProfile.DoesNotExist:
         profile = None
     if request.method == 'POST':
+        if len(request.POST.get("password")) < 6:
+            return render(request, 'west_end_market/edit_profile.html',
+                          {'user': user, 'profile': profile, 'edited': edited,'password_short':True})
         user.username = request.POST.get("username")
-        user.set_password = request.POST.get("password")
+        user.set_password(request.POST.get("password"))
         user.email = request.POST.get("email")
         if request.FILES.get("picture"):
             profile.picture = request.FILES.get("picture")
@@ -219,4 +230,4 @@ def edit_listing(request, listing_id):
 
 
 def cookie_policy(request):
-    return render(request, 'west_end_market/cookie_policy.html',{})
+    return render(request, 'west_end_market/cookie_policy.html', {})

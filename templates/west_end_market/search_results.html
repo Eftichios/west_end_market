@@ -40,7 +40,10 @@
         {% endfor %}
     </div>
 {% else %}
-    No results for "{{search}}"
+    <div class="container margin-top-20">
+        <div>
+            <h4>Found no results for "{{search}}" :(</h4>
+        </div>
 {% endif %}
 {% endblock %}
         

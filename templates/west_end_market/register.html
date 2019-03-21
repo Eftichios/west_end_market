@@ -11,6 +11,10 @@
         <span>&#10004; You have successfully created a new account!</span>
         <a href=" {% url 'login' %} ">Click here to login!</a>
     </div>
+{% elif password_short %}
+    <div class="alert alert-danger" role="alert">
+        <span>&#10008;Password must be at least 6 characters long!</span>
+    </div>
 {% endif %}
                 <div>
                     {% if user_form.errors%}

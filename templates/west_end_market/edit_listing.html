@@ -18,7 +18,7 @@
     <form id="edit_listing_form" method = 'post' enctype="multipart/form-data" action="{% url 'edit_listing' listing.id %}">{% csrf_token %}
             <div class="row">
                 <div class="col-md-12 text-center margin-bottom-20">
-                    <h3 class="text-capitalize">Title: {{listing.title}}</h3>
+                    <h3 class="text-capitalize">Title: <input id="id_title" value="{{listing.title}}" name="title"></h3>
                 </div>
             </div>
             <div class="row">
