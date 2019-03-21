@@ -1,0 +1,107 @@
+<!doctype html>
+{% load staticfiles %}
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <link rel="stylesheet" type="text/css" href="{% static 'vendors/css/bootstrap.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'vendors/css/palette.css' %}">
+        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Lato:300i,400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'resourses/css/styleaddons.css' %}">
+        <link rel="shortcut icon" href="{% static 'images/logo-title.ico' %}"/>
+        
+        <title>
+            West End Market - 
+            {% block title_block %}
+                West End Market Default
+            {% endblock %}
+        </title>
+    </head>
+  
+    <body class="d-flex flex-column h-100">
+
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light light-primary-color">
+                <img src="{% static 'images/logo.png' %}" alt="image of the logo" width=auto height= 65px>
+                <h1><a class="navbar-brand main-heading margin-right-40" style="color: #FF5722;" href="{% url 'index' %}">West End Market</a></h1>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'show_category' 'all' %}">All Listings</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{% url 'show_category' 'school' %}">School</a>
+                                <a class="dropdown-item" href="{% url 'show_category' 'electronics' %}">Electronics</a>
+                                <a class="dropdown-item" href="{% url 'show_category' 'clothing' %}">Clothing</a>
+                                <a class="dropdown-item" href="{% url 'show_category' 'homeware' %}">Homeware</a>
+                                <a class="dropdown-item" href="{% url 'show_category' 'sports' %}">Sports</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'show_category' 'other' %}">Other</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <form id = "searchform" method="POST" action="{% url 'search_results' %}" class="form-inline my-2 my-lg-0">{% csrf_token %}
+                        <input name="search" id="searchbox" value = "{{request.GET.search}}" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-success my-2 my-sm-0 margin-right-40 block-button" type="submit">Search &#x1F50D;</button>
+                    </form>
+                    <ul class="navbar-nav mr-auto">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a href="{% url 'my_account' %}" class="btn btn-primary margin-right-20 block-button">My account</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'logout' %}" class="btn btn-danger margin-right-20 block-button">Logout</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a href="{% url 'login' %}" class="btn btn-primary margin-right-20 block-button">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'register' %}" class="btn btn-danger margin-right-20 block-button">Sign up</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <main role="main" class="flex-shrink-0 margin-bottom-40">
+            <div>
+                {% block body_block %}
+
+                {% endblock %}
+            </div>
+        </main>
+        
+        <footer class="footer mt-auto py-3 footer-style">
+            <!-- DUMMY FOOTER TEXT -->
+            <div class="footer-content">
+                <p class="text-center text-secondary"><a><a class="text-secondary" href="{% url 'index' %}">Home</a> | <a class="text-secondary" href="{% url 'cookie_policy' %}">Cookie Policy</a> | <a class="text-secondary" href="mailto:gla.westendmarket@gmail.com">Contact</a> | &copy; West End Market 2019</strong></p>
+            </div>
+        </footer>        
+        
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="{% static 'vendors/js/bootstrap.js' %}"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+        <script type="text/javascript" src="{% static 'vendors/js/cookiepopup.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendors/js/modalimage.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendors/js/scrolluparrow.js' %}"></script>
+    </body>
+</html>

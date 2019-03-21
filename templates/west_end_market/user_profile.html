@@ -1,0 +1,34 @@
+{% extends 'west_end_market/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    User Profile
+{% endblock %}
+
+{% block body_block %}
+<div class="container">
+    <form>
+        <div class="row"> 
+            <div class="col-md-12 margin-top-10">
+                <h3>{{user.username}} listings</h3>
+                <hr>
+            </div>
+        </div>
+        <div class="margin-top-bottom-10 row">
+            {% for listing in listings %}
+            <div class="col-md-2">
+                <div class="text-center">
+                    <a href="{% url 'show_listing' listing.id %}"><img class="photo-fit-mobile" id="myImg" src="{{listing.picture.url}}" alt="image of the item" width=100 height=100></a>
+                </div>
+            </div>    
+            <div class="text-box col-md-9 text-box-mobile">
+                <p><strong>Item Name:</strong> {{listing.title}}</p>
+                <p><strong>Price:</strong> {{listing.price}}</p>
+                <p><strong>Date:</strong> {{listing.date.date}}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+    </form>
+</div>    
+{% endblock %}

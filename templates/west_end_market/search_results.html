@@ -1,0 +1,49 @@
+{% extends 'west_end_market/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Listing
+{% endblock %}
+        
+{% block body_block %}
+{% if results %}
+    <div class="container margin-top-20">
+        <div>
+            <h4>Found {{results|length}} results for "{{search}}":</h4>
+            <hr>
+        </div>
+
+        {% for result in results %}
+        <div class="row margin-top-10">
+            <div class="col-md-2">
+                <div class="text-center">
+                    <div>
+                        <a href="{% url 'show_listing' result.id %}"><img id="myImg" src="{{result.picture.url}}" class="photo-fit photo-fit-mobile round-edges" alt="item image"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-box text-box-mobile col-md-9">
+                <div class="row">
+                    <span><strong>Title: </strong>{{result.title}}</span>
+                </div>
+                <div class="row">
+                    <span><strong>Price: </strong>{{result.price}}</span>
+                </div>
+                <div class="row">
+                    <span><strong>Postcode: </strong>{{result.postcode}}</span>
+                </div>
+                <div class="row">
+                    <span><strong>User: </strong><a href="{% url 'user_profile' result.user.username %}">{{result.user.username}}</a></span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    No results for "{{search}}"
+{% endif %}
+{% endblock %}
+        
+        
+        
+        

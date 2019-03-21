@@ -1,0 +1,56 @@
+{% extends 'west_end_market/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Listing
+{% endblock %}
+        
+{% block body_block %}
+{% if category %}
+    <div class="container margin-top-20">
+        <div>
+            <h4 class="text-capitalize">Category: {{category}}</h4>
+            <hr>
+        </div>
+        <div>
+            <button onclick="topFunction()" id="scrollBtn" title="Go to top"><strong>&#8593;</strong></button>
+        </div>
+
+        {% for listing in listings %}
+        <div class="row margin-top-10">
+            <div class="col-md-2">
+                <div class="text-center">
+                    <div>
+                        <a href="{% url 'show_listing' listing.id %}"><img id="myImg" src="{{listing.picture.url}}" class="photo-fit photo-fit-mobile round-edges" alt="item image"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-box text-box-mobile col-md-9">
+                <div class="row">
+                    <span><strong>Title: </strong>{{listing.title}}</span>
+                </div>
+                <div class="row">
+                    <span><strong>Price: </strong>{{listing.price}}</span>
+                </div>
+                <div class="row">
+                    <span><strong>Postcode: </strong>{{listing.postcode}}</span>
+                </div>
+                <div class="row">
+                    <span><strong>User: </strong><a class="text-decoration-none" href="{% url 'user_profile' listing.user.username %}">{{listing.user.username}}</a></span>
+                </div>
+                <div class="row">
+                    <span><strong>Date: </strong>{{listing.date.date}}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="alert alert-danger" role="alert">
+        <span>&#10004; There is no such category. Please check the url and try again!</span>
+{% endif %}
+{% endblock %}
+        
+        
+        
+        

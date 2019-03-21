@@ -1,0 +1,66 @@
+{% extends 'west_end_market/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Edit Listing
+{% endblock %}
+
+{% block body_block %}
+<div class="container margin-top-20">
+    <form id="edit_listing_form" method = 'post' enctype="multipart/form-data" action="{% url 'edit_listing' listing.id %}">{% csrf_token %}
+            <div class="row">
+                <div class="col-md-12 text-center margin-bottom-20">
+                    <input required id="id_title" type="text" class="form-control font-italic" value ="{{listing.title}}" name="title">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="margin-bottom-20 text-center">
+                        <div class="container">
+                            <img id="myImg" src="{{listing.picture.url}}" class="height-240 width-240 round-edges" alt="image of the item">
+                            <div class="form-group text-center font-weight-bold ">
+                                <label>Upload Image</label>
+                                <input value="{{listing.picture}}" id="id_picture" type="file" name="picture" onchange="readURL(this);">
+                                <br>
+                                <p class="text-left helptext">Only png and jpg allowed</p>
+                            </div>
+                            <div id="myModal" class="modal">
+                                <span class="close">&times;</span>
+                                <img class="modal-content" id="img01">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-box col-md-9">
+                    <div class="row">
+                        <p><strong>Description: </strong><textarea required id="id_description" placeholder="{{listing.description}}" class="form-control font-italic" name="description"></textarea></p>
+                    </div>
+                    <div class="row">
+                        <p><strong>Price: </strong>£<input required id="id_price" type="text" class="form-control font-italic" value ="{{listing.price}}" name="price"></p>
+                    </div>
+                    <div class="row">
+                        <p><strong>Postcode: </strong><input required id="id_postcode" type="text" class="form-control font-italic" value ="{{listing.postcode}}" name="postcode"></p>
+                    </div>
+                    <div class="row">
+                        <p><button class="btn btn-primary" type="submit" value="submit">Update listing</button></p>
+                    </div>
+                </div>
+            </div>
+    </form>
+</div>
+<script type="text/javascript">
+//previews the photo before upload, called when picture is selected
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#myImg').attr({'src': e.target.result});
+        }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+</script>
+{% endblock %}

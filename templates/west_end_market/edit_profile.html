@@ -1,0 +1,83 @@
+{% extends 'west_end_market/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Edit Profile
+{% endblock %}
+
+{% block body_block %}
+                <div>
+                    {% if user_form.errors%}
+                        {% for error in user_form %}
+                            {% for r in error.errors %}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <span>{{r}}</span>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span class="reduce-size align-text-top" aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+<div class="container margin-top-30">
+    <form id="edit_profile_form" method = 'post' enctype="multipart/form-data" action="{% url 'edit_profile' %}">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <h3>Edit Profile</h3>
+                <div class="text-center">
+                    {% if profile.picture.url %}
+                        <img id="id_profile" class="img-thumbnail"  src="{{profile.picture.url}}" alt="image of the item" width=200 height=200>
+                    {% else %}
+                        <img id="id_placeholder" class="img-thumbnail"  src="{% static 'images/profile.jpg' %}" alt="image of the item" width=200 height=200>
+                    {% endif %}
+                </div>
+                        
+                <div class="form-group text-center font-weight-bold ">
+                    <label>Change profile picture</label>
+                    <input id="id_picture" type="file" name="picture" onchange="readURL(this);">
+                    <br>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="form-group font-weight-bold">
+                    <label>Username</label>
+                    <input required id="id_username" type="text" class="form-control font-italic" value ="{{user.username}}" name="username">
+                    <p class="text-left helptext">Required. 25 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
+                </div>
+                <div class="form-group font-weight-bold">
+                    <label>Email address</label>
+                    <input required id="id_email" type="email" class="form-control font-italic" value ="{{user.email}}" name="email">
+                </div>
+                <div class="form-group font-weight-bold">
+                    <label>Password</label>
+                    <input required id="id_password" type="password" class="form-control font-italic" value="{{user.password}}" name="password">
+                </div>
+                        
+                <div class="text-right">
+                    <button class="btn btn-primary block-button" type="submit" value="submit" >Update Profile</button>
+                </div>
+            </div>
+        </div>       
+    </form>
+    
+</div>
+<script type="text/javascript">
+//previews the photo before upload, called when picture is selected
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#id_placeholder').attr({'src': e.target.result});
+            $('#id_profile').attr({'src': e.target.result});
+        }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+</script>
+{% endblock %}  

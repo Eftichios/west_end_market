@@ -1,0 +1,35 @@
+{% extends 'west_end_market/base.html' %}
+{% load staticfiles %}
+
+<!--<title>
+    West End Market - 
+        {% block title_block %}
+            West End Market Defult
+        {% endblock %}
+</title>-->
+
+{% block title_block %}
+    My Listings
+{% endblock %}
+
+{% block body_block %}   
+<div>
+    <div class="container">
+        <h3 class="margin-top-30">My Listings</h3>
+    </div>
+    <div class="container">
+        <div class="row margin-top-10">
+            <div class="col-md-8">
+                <button type="button" class="btn btn-light desktop-item desktop-block-button block-button">Item Name #1</button>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-info desktop-block-button block-button">Edit Item</button>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-danger desktop-block-button block-button">Delete Item</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}     
+        

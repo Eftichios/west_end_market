@@ -1,0 +1,85 @@
+{% extends 'west_end_market/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Listing
+{% endblock %}
+        
+{% block body_block %}
+<div class="container margin-top-20">
+        {% if listing %}
+            <div class="row">
+                <div class="col-md-12 text-center margin-bottom-20">
+                    <h3>{{listing.title}}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="margin-bottom-20 text-center">
+                        <div class="container">
+                            <img id="myImg" src="{{listing.picture.url}}" class="height-240 width-240 round-edges" alt="image of the item">
+                            <div id="myModal" class="modal">
+                                <span class="close">&times;</span>
+                                <img class="modal-content" id="img01">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-box col-md-9">
+                    <div class="row">
+                        <p><strong>Description: </strong>{{listing.description}}</p>
+                    </div>
+                    <div class="row">
+                        <p><strong>Price: </strong>£{{listing.price}}</p>
+                    </div>
+                    <div class="row">
+                        <p><strong>Category: </strong>{{listing.category}}</p>
+                    </div>
+                    <div class="row">
+                        <p><strong>Postcode: </strong>{{listing.postcode}}</p>
+                    </div>
+                    <div class="row">
+                        <p><strong>Date Added: </strong>{{listing.date.date}}</p>
+                    </div>
+                    <div class="row">
+                        <p><strong>User: </strong><a class="text-decoration-none" href="{% url 'user_profile' listing.user.username %}">{{listing.user.username}}</a></p>
+                    </div>
+                    <div class="row">
+                        <p><strong>Email: </strong>{{listing.user.email}}</p>
+                    </div>
+                    <div class="row">
+                        {% if user == listing.user %}
+                            <p><a class="btn btn-primary" href="{% url 'edit_listing' listing.id %}">Edit Listing</a></p>
+                        {% else %}
+                            <p><a class="btn btn-danger" href="mailto:gla.westendmarket@gmail.com?subject=West%20End%20Market:%20Reported%20Listing&body=User%20reports%20the%20following%20listing:%20{{listing.title}}%0D%0A%0D%0APlease%20provide%20additional%20information%20for%20the%20report%20below:%0D%0A%0D%0A%0D%0A">Report Listing</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-box col-md-12 margin-top-bottom-10">
+                    <p>Comments:</p>
+
+                    {% for comment in comments %}
+                    <div class="comment-container">
+                        <div class="date"><strong><a class="text-decoration-none" href="{% url 'user_profile' comment.user %}">{{ comment.user }}</a></strong> - {{ comment.date }}
+                        <br>{{ comment.comment|linebreaks }}</div>
+                    </div>
+                    {% endfor %}
+                    {% if user.is_authenticated %}
+                        <form method="POST" class="post-form" action="{% url 'show_listing' listing.id %}">{% csrf_token %}
+                            <textarea required id="id_comment" class="form-control font-italic" placeholder="Enter comment here..." name="comment"></textarea>
+                            <button type="submit" class="save btn btn-primary block-button margin-top-20">Add comment</button>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            There is no such listing! :(
+        {% endif %}
+</div>   
+{% endblock %}
+        
+        
+        
+        

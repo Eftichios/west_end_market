@@ -1,0 +1,52 @@
+{% extends 'west_end_market/base.html' %}
+{% load staticfiles %}
+
+<!--<title>
+    West End Market - 
+        {% block title_block %}
+            West End Market Defult
+        {% endblock %}
+</title>-->
+
+{% block body_block %}
+
+<div class="container margin-top-30 content">
+    <h2>Welcome!</h2>
+    <h5>Recent Listings:</h5>
+    <hr>
+    
+    <div class="text-box item-box-mobile">
+        <div class="row">
+            {% for listing in listings|slice:"0:4" %}
+                <div class="col-md-3 text-center font-weight-bold">
+                    <a href="{% url 'show_listing' listing.id %}">
+                    {% if listing.title|length > 15 %}
+                        <label>{{listing.title|slice:"0:14"}}...</label>
+                    {% else %}
+                        <label>{{listing.title}}</label>
+                    {% endif %}
+                    <img id="myImg" src="{{listing.picture.url}}" class="img-fluid item-box-mobile height-200 width-200" alt="square image">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="row margin-top-30">
+            {% for listing in listings|slice:"4:8" %}
+                <div class="col-md-3 text-center font-weight-bold">
+                    <a href="{% url 'show_listing' listing.id %}">
+                    {% if listing.title|length > 15 %}
+                        <label>{{listing.title|slice:"0:14"}}...</label>
+                    {% else %}
+                        <label>{{listing.title}}</label>
+                    {% endif %}
+                    <img id="myImg" src="{{listing.picture.url}}" class="img-fluid item-box-mobile height-200 width-200" alt="square image">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+        
+    
+</div>
+{% endblock %}
