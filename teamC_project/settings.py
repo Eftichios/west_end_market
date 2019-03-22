@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'social_django',
     'west_end_market'
 ]
 
@@ -51,7 +50,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware', 
     
 ]
 
@@ -69,8 +67,6 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -78,15 +74,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'teamC_project.wsgi.application'
 
-# Facebook/Google login backends
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.facebook.FacebookOAuth2', # for Facebook authentication
 
-    'social_core.backends.open_id.OpenIdAuth', # for Google authentication 
-    'social_core.backends.google.GoogleOpenId', 
-    'social_core.backends.google.GoogleOAuth2',
+AUTHENTICATION_BACKENDS = (
     
-    'django.contrib.auth.backends.ModelBackend', #ensures the user will still able to login via Django auth Model backend
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 
@@ -149,11 +140,3 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
 LOGIN_URL = '/west_end_market/login/'
-LOGIN_REDIRECT_URL = '/west_end_market/index/' #redirect the user after authenticating from Django Login and Social Auth
-
-SOCIAL_AUTH_FACEBOOK_KEY = '330463727594999'  # Facebook App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = 'cf2f409449aade9480b9037b2bcb0e66'  # Facebook App Secret
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='369821365636-javvujh0tclc9q9evnlktjursg56he6q.apps.googleusercontent.com'  #Google+ Client Key
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '8lIaT-iMbnb_HRDpTU1f6aCf' #Google+ Secret Key
- 

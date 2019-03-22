@@ -1,28 +1,21 @@
 import os
 from django.utils import timezone
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'teamC_project.settings')
-
-import django
-django.setup()
-
-
-from west_end_market.models import Category, Listing, Comment, User, UserProfile
+from west_end_market.models import Category, Listing, Comment, User
 
 
 def populate():
 
-    # dummy users
-    users = {"user_1": {"username": "JohnPope", "email": "JohnPope@email.com", "picture":"JohnPope/profile.jpg"},
-             "user_2": {"username": "ChristopherSmith", "email": "ChristopherSmith@email.com", "picture":"ChristopherSmith/profile.jpg"},
-             "user_3": {"username": "PeterBrown", "email": "PeterBrown@email.com", "picture":"PeterBrown/profile.jpg"},
-             "user_4": {"username": "James", "email": "James@email.com", "picture":"James/profile.jpg"},
-             "user_5": {"username": "Veronica", "email": "Veronica@email.com", "picture":"Veronica/profile.jpg"},
-             "user_6": {"username": "Maria", "email": "Maria@email.com", "picture":"Maria/profile.jpg"},
-             "user_7": {"username": "Victor", "email": "Victor@email.com", "picture":"Victor/profile.jpg"},
-             "user_8": {"username": "Batman", "email": "Batman@email.com", "picture": "Batman/profile.jpg"}}
+    users = {"user_1": {"username": "JohnPope", "email": "JohnPope@email.com"},
+             "user_2": {"username": "ChristopherSmith", "email": "ChristopherSmith@email.com"},
+             "user_3": {"username": "PeterBrown", "email": "PeterBrown@email.com"},
+             "user_4": {"username": "James", "email": "James@email.com"},
+             "user_5": {"username": "Veronica", "email": "Veronica@email.com"},
+             "user_6": {"username": "Maria", "email": "Maria@email.com"},
+             "user_7": {"username": "Victor", "email": "Victor@email.com"},
+             "user_8": {"username": "Batman", "email": "Batman@email.com"},
+             "user_9": {"username": "userNoListings", "email": "userNoListings@email.com"}}
 
-    # dummy categories with listings
     school = [{"id": "sch1",
                      "title": "Introduction to Linear Algebra",
                      "description": "Used book but in very good condition",
@@ -210,7 +203,6 @@ def populate():
             "sports": {"listings": sports, "total": len(sports)},
             "other": {"listings": other, "total": len(other)}}
 
-    # dummy comments
     comments = {"sch1": [{"comment": "I am interested!", "user": "Maria"},
                          {"comment": "Hey Maria, you can send me an email so we can discuss the details", "user": "JohnPope"}],
                 "sch2": [{"comment": "Just send you an email", "user": "Veronica"},
@@ -249,16 +241,10 @@ def populate():
                          {"comment": "Another comment on others item 3", "user": "Batman"}]
                 }
 
-    # creates dummy users
     for user, user_data in users.items():
         u = User.objects.get_or_create(username=user_data["username"], email=user_data["email"])[0]
-        # all dummy users will have the same password for testing
-        profile = UserProfile.objects.get_or_create(user=u, picture=user_data["picture"])[0]
-        u.set_password("test123")
-        profile.save()
         u.save()
 
-    # creates categories, listings and comments
     for cat, cat_data in cats.items():
         c = add_category(cat, cat_data["total"])
         for l in cat_data["listings"]:
@@ -269,13 +255,9 @@ def populate():
                     u = User.objects.get(username=com["user"])
                     add_comment(com["comment"], u, a)
 
-    # prints to the console the listings that were created
-    for c in Category.objects.all():
-        for l in Listing.objects.filter(category=c):
-            print("- {0} - {1}".format(str(c), str(l)))
-
-
-'''functions to save the models to the database'''
+    #for c in Category.objects.all():
+        #for l in Listing.objects.filter(category=c):
+            #print("- {0} - {1}".format(str(c), str(l)))
 
 
 def add_category(name, listings):
@@ -294,8 +276,3 @@ def add_comment(comment, user, listing):
     co = Comment.objects.get_or_create(comment=comment, user=user, listing=listing)[0]
     co.save()
     return co
-
-
-if __name__ == '__main__':
-    print("Starting west_end_market population script...")
-    populate()

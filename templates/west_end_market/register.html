@@ -37,7 +37,7 @@
             <div class="col-md-4 text-center">
                 <h3>User Registration</h3>
                 <div class="text-center">
-                    <img id="id_placeholder" class="img-thumbnail"  src="{% static 'images/placeholder.jpg' %}" alt="image of the item" width=200 height=200>
+                    <img id="id_placeholder" class="height-240 width-240 round-edges"  src="{% static 'images/placeholder.jpg' %}" alt="image of the item" width=200 height=200>
                 </div>
                         
                 <div class="form-group text-center font-weight-bold ">
@@ -70,19 +70,4 @@
     </form>
     
 </div>
-<script type="text/javascript">
-//previews the photo before upload, called when picture is selected
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function(e) {
-            $('#id_placeholder').attr({'src': e.target.result});
-        }
-
-    reader.readAsDataURL(input.files[0]);
-  }
-}
-
-</script>
 {% endblock %}  

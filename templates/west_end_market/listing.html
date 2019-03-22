@@ -49,9 +49,12 @@
                     </div>
                     <div class="row">
                         {% if user == listing.user %}
-                            <p><a class="btn btn-info" href="{% url 'edit_listing' listing.id %}">Edit Listing</a></p>
+                            <div class="text-center">
+                                <a href="{% url 'edit_listing' listing.id %}"><button class="btn btn-info block-button">Edit Listing</button></a>
+                                <a href="{% url 'delete_listing' listing.pk %}"><button class="btn btn-danger block-button">Delete Listing</button></a>
+                            </div>
                         {% else %}
-                            <p><a class="btn btn-danger" href="mailto:gla.westendmarket@gmail.com?subject=West%20End%20Market:%20Reported%20Listing&body=User%20reports%20the%20following%20listing:%20{{listing.title}}%0D%0A%0D%0APlease%20provide%20additional%20information%20for%20the%20report%20below:%0D%0A%0D%0A%0D%0A">Report Listing</a></p>
+                            <span><a class="btn btn-danger" href="mailto:gla.westendmarket@gmail.com?subject=West%20End%20Market:%20Reported%20Listing&body=User%20reports%20the%20following%20listing:%20{{listing.title}}%0D%0A%0D%0APlease%20provide%20additional%20information%20for%20the%20report%20below:%0D%0A%0D%0A%0D%0A">Report Listing</a></span>
                         {% endif %}
                     </div>
                 </div>
@@ -75,7 +78,11 @@
                 </div>
             </div>
         {% else %}
-            There is no such listing! :(
+            <div class="alert alert-danger" role="alert">
+                <span>&#10008; There is no such listing. Please check the url and try again!</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span class="reduce-size align-text-top" aria-hidden="true">&times;</span></button>
+            </div>
         {% endif %}
 </div>   
 {% endblock %}

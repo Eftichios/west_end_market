@@ -6,29 +6,67 @@
 {% endblock %}
 
 {% block body_block %}
-<div class="container">
-    <form>
-        <div class="row"> 
-            <div class="col-md-12 margin-top-10">
-                <h3>{{user.username}} listings</h3>
-                <hr>
-            </div>
-        </div>
-        <div class="margin-top-bottom-10 row">
-            {% for listing in listings %}
-            <div class="col-md-2">
-                <div class="text-center">
-                    <a href="{% url 'show_listing' listing.id %}"><img class="photo-fit-mobile" id="myImg" src="{{listing.picture.url}}" alt="image of the item" width=100 height=100></a>
-                </div>
-            </div>    
-            <div class="text-box col-md-9 text-box-mobile">
-                <div class="row"><span><strong>Item Name:</strong> {{listing.title}}</span></div>
-                <div class="row"><span><strong>Price:</strong> {{listing.price}}</span></div>
-                <div class="row"><span><strong>Date:</strong> {{listing.date.date}}</span></div>
-            </div>
-            {% endfor %}
-        </div>
+{% if user %}
+	<div class="container">
+		<form>
+			<div class="row margin-top-20"><h3>User: {{user.username}}</h3></div>
+			<div class="row margin-top-10">
 
-    </form>
-</div>    
+				<div class="col-md-3">
+					<div>
+						{% if profile %}
+							<img id="id_profile" class="img-fluid item-box-mobile height-240 width-240 round-edges"  src="{{ profile.picture.url}}" alt="profile picture">
+						{% else %}
+							<img id="id_profile" class="img-fluid item-box-mobile height-240 width-240 round-edges"  src="{% static 'images/profile.jpg' %}" alt="profile picture">
+						{% endif %}
+					</div>
+				</div>
+				<div class="col-md-8 font-size-inc">
+					<br>
+					<div class="row margin-top-50">
+						<div class="text-box-mobile col-md-9">
+							<div class="row">
+								<span><strong>Email address: </strong>{{user.email}}</span>
+							</div>
+							<div class="row">
+								<span class="text-right"><strong>Total listings: </strong>{{listings|length}}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<hr>
+			<h3>Listings:</h3>
+			{% if listings %}
+				<div class="row margin-top-bottom-10 margin-top-20">
+					{% for listing in listings %}
+					<div class="col-md-2">
+						<div class="text-center">
+							<a href="{% url 'show_listing' listing.id %}"><img class="photo-fit-mobile" id="myImg" src="{{listing.picture.url}}" alt="image of the item" width=100 height=100></a>
+						</div>
+					</div>    
+					<div class="text-box col-md-9 text-box-mobile">
+						<div class="row"><span><strong>Item Name:</strong> {{listing.title}}</span></div>
+						<div class="row"><span><strong>Price:</strong> {{listing.price}}</span></div>
+						<div class="row"><span><strong>Date:</strong> {{listing.date.date}}</span></div>
+					</div>
+					{% endfor %}
+				</div>
+			{% else %}
+				<div class="margin-top-bottom-10 row">
+				This user currently has no listings!
+				</div>
+			{% endif %}
+
+		</form>
+	</div>    
+{% else %}
+	<div class="alert alert-danger" role="alert">
+        <span>&#10008;Password must be at least 6 characters long!</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span class="reduce-size align-text-top" aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %} 	
 {% endblock %}

@@ -12,8 +12,12 @@
             <h4>Found {{results|length}} results for "{{search}}":</h4>
             <hr>
         </div>
-
-        {% for result in results %}
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort By: </a>
+        <div class="dropdown-menu text-center-mobile" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'search_results' search 'price' %}">Price (Ascending)</a>
+            <a class="dropdown-item" href="{% url 'search_results' search 'date' %}">Date (Oldest-Newest)</a>
+        </div>
+        {% for result in results|dictsort:sort_by %}
         <div class="row margin-top-10">
             <div class="col-md-2">
                 <div class="text-center">
@@ -34,6 +38,9 @@
                 </div>
                 <div class="row">
                     <span><strong>User: </strong><a href="{% url 'user_profile' result.user.username %}">{{result.user.username}}</a></span>
+                </div>
+                <div class="row">
+                    <span><strong>Date: </strong>{{result.date.date}}</span>
                 </div>
             </div>
         </div>

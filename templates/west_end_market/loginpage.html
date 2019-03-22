@@ -19,42 +19,23 @@
             <div class="container">
                 <h3 class="text-center margin-top-30">Login</h3>
             </div>
-            <div class="container">
-                <div class="row margin-top-30">
-                    <div class="col-md-5  font-weight-bold">
-                        <form id="login_form" method="post" action="{% url 'login' %}">
-                            {% csrf_token %}
-                            <div class="form-group">
-                              <label>Username</label>
-                              <input type="text" name="username" class="form-control" placeholder="Username">
-                            </div>
-
-                            <div class="form-group">
-                              <label>Password</label>
-                              <input type="password" name="password" class="form-control" placeholder="Password">
-                            </div>
-                            <div>
-                                <button type="submit" value="submit" class="btn btn-primary block-button">Login</button>
-                            </div>
-                        </form>
+            <div class="container text-box text-box-mobile col-md-4 font-weight-bold text-center margin-top-20">
+                <form id="login_form" method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <div class="form-group padding-box-80 block-button">
+                        <label>Username</label>
+                        <input type="text" name="username" class="form-control" placeholder="Username">
                     </div>
-                    <div class="col-md-2">
-                      <p></p>
+                    <div class="form-group padding-box-80 block-button">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
-                    <div class="col-md-5">
-                        <div class="margin-top-30">
-							<a href="{% url 'social:begin' 'facebook' %}"><button class="btn btn-primary desktop-block-button">Login with Facebook</button></a>
-                            
-                        </div>
-                        <div class="margin-top-30">
-							<a href="{% url 'social:begin' 'google-oauth2' %}"><button class="btn btn-danger desktop-block-button">Login with Google</button></a>
-                            
-                        </div>
+                    <div>
+                        <button type="submit" value="submit" class="btn btn-primary block-button">Login</button>
                     </div>
-                </div>
+                </form>
                 <div class="margin-top-30">
-                <h5 class="text-center">If you do not have an account, <a href="{% url 'register' %}">click here</a> to register</h5>
-
+                <h6 class="text-center">If you do not have an account, <a href="{% url 'register' %}">click here</a> to register</h6>
                 </div>
             </div>
         </div>
