@@ -21,6 +21,7 @@ def index(request):
 @login_required
 def add_listing(request):
     form = ListingForm()
+    context_dict={}
     if request.method == 'POST':
         form = ListingForm(request.POST, request.FILES)
         if form.is_valid():
@@ -40,20 +41,24 @@ def add_listing(request):
             return index(request)
         else:
             print(form.errors)
-
-    return render(request, 'west_end_market/add_listing.html', {'form': form})
+    context_dict['form'] = form
+    return render(request, 'west_end_market/add_listing.html', context_dict)
 
 
 # guests should be able to create an account
 def register(request):
     registered = False
+    context_dict = {}
     if request.method == 'POST':
         # custom check to see if password is invalid
         if len(request.POST.get("password")) < 6:
             user_form = UserForm()
             profile_form = UserProfileForm()
-            return render(request, 'west_end_market/register.html',
-                          {'user_form': user_form, 'profile_form': profile_form, 'registered': registered,'password_short':True})
+            context_dict["user_form"] = user_form
+            context_dict["profile_form"] = profile_form
+            context_dict["registered"] = registered
+            context_dict["password_short"] = True
+            return render(request, 'west_end_market/register.html', context_dict)
         # user form is username/email/password and profile form is the profile picture
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileForm(request.POST, request.FILES)
@@ -71,35 +76,34 @@ def register(request):
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
-
-    return render(request, 'west_end_market/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+    context_dict["user_form"] = user_form
+    context_dict["profile_form"] = profile_form
+    context_dict["registered"] = registered
+    return render(request, 'west_end_market/register.html', context_dict)
 
 
 # allows a registered user to log in
 def user_login(request):
-
+    context_dict = {}
     # redirect logged-in users to the home page if they try to access the login page
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse('index'))
-    success = True
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
 
         if user:
-            if user.is_active:
-                login(request, user)
-                return HttpResponseRedirect(reverse('index'))
-            else:
-                #to do??
-                return HttpResponse("Your West End Market account is disabled.")
+            login(request, user)
+            return HttpResponseRedirect(reverse('index'))
         else:
             success = False
-            return render(request, 'west_end_market/loginpage.html', {"success": success})
+            context_dict['success'] = False
+            return render(request, 'west_end_market/loginpage.html', context_dict)
 
     else:
-        return render(request, 'west_end_market/loginpage.html', {"success": success})
+        context_dict['success'] = True
+        return render(request, 'west_end_market/loginpage.html', context_dict)
 
 
 # logs out a logged in user
@@ -145,10 +149,14 @@ def show_listing(request, listing_id):
 
 # shows the listings in a category, uses sort_by to enable sorting functionality, default is sorted by date
 def show_category(request, category_title, sort_by='date'):
+    context_dict = {}
     # show all available listings if title is 'all'
     if category_title == 'all':
-        return render(request, 'west_end_market/category_page.html', {'listings': Listing.objects.all(), 'category': 'all', 'category_name': 'all', "sort_by": sort_by})
-    context_dict = {}
+        context_dict["category"] = 'all'
+        context_dict["listings"] = Listing.objects.all()
+        context_dict["category_name"] = 'all'
+        context_dict["sort_by"] = sort_by
+        return render(request, 'west_end_market/category_page.html', context_dict)
     try:
         # get the category and its listings
         category = Category.objects.get(name=category_title)
@@ -188,7 +196,7 @@ def search_results(request, search=None, sort_by='date'):
     results = []
     if request.method == 'POST':
         search = request.POST.get("search")
-    if search == "" or search == "all" or search== None:
+    if search == "" or search == "all" or (not search):
         search = "all"
         results = listings
     else:
@@ -210,7 +218,8 @@ def my_account(request):
         profile = UserProfile.objects.get(user=user)
     except UserProfile.DoesNotExist:
         profile = None
-    return render(request, 'west_end_market/my_account.html', {'listings': listings, 'user': user, 'profile': profile})
+    context_dict = {'listings': listings, 'user': user, 'profile': profile}
+    return render(request, 'west_end_market/my_account.html', context_dict)
 
 
 # allows users to edit profile
@@ -226,8 +235,8 @@ def edit_profile(request):
     if request.method == 'POST':
         # check that the password is valid
         if len(request.POST.get("password")) < 6:
-            return render(request, 'west_end_market/edit_profile.html',
-                          {'user': user, 'profile': profile, 'edited': edited, 'password_short': True})
+            context_dict = {'user': user, 'profile': profile, 'edited': edited, 'password_short': True}
+            return render(request, 'west_end_market/edit_profile.html', context_dict)
         # update the user's details and its profile
         user.username = request.POST.get("username")
         user.set_password(request.POST.get("password"))
@@ -237,8 +246,8 @@ def edit_profile(request):
             profile.save()
         user.save()
         edited = True
-
-    return render(request, 'west_end_market/edit_profile.html', {'user': user, 'profile': profile, 'edited': edited})
+    context_dict = {'user': user, 'profile': profile, 'edited': edited}
+    return render(request, 'west_end_market/edit_profile.html', context_dict)
 
 
 # allow users to edit their own listings
@@ -263,7 +272,8 @@ def edit_listing(request, listing_id):
         listing.save()
         edited = True
 
-    return render(request, 'west_end_market/edit_listing.html', {"listing": listing, 'edited': edited, 'user':user})
+    context_dict = {"listing": listing, 'edited': edited, 'user': user}
+    return render(request, 'west_end_market/edit_listing.html', context_dict)
 
 
 # allows a user to delete their own listings

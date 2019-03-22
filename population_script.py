@@ -220,7 +220,7 @@ def populate():
                 "ele1": [{"comment": "I am interested!", "user": "ChristopherSmith"},
                          {"comment": "Hey Christopher, you can send me an email so we can discuss the details", "user": "James"}],
                 "ele2": [{"comment": "Just send you an email", "user": "PeterBrown"},
-                         {"comment": "I really need this book, I can make a you a better offer. Check your email.", "user": "JohnPope"}],
+                         {"comment": "I really need this phone, I can make a you a better offer. Check your email.", "user": "JohnPope"}],
                 "ele3": [{"comment": "Comment by user here", "user": "Batman"},
                          {"comment": "Reply by user", "user": "James"}],
                 "clo1": [{"comment": "Comment on clothing item 1", "user": "JohnPope"},

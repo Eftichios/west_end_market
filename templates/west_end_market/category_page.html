@@ -18,8 +18,8 @@
 
         <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort By: </a>
         <div class="dropdown-menu text-center-mobile" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'show_category' category_name 'price' %}">Price</a>
-            <a class="dropdown-item" href="{% url 'show_category' category_name 'date' %}">Date</a>
+            <a class="dropdown-item" href="{% url 'show_category' category_name 'price' %}">Price (Ascending)</a>
+            <a class="dropdown-item" href="{% url 'show_category' category_name 'date' %}">Date (Oldest-Newest)</a>
         </div>
         {% for listing in listings|dictsort:sort_by %}
         <div class="row margin-top-10">
