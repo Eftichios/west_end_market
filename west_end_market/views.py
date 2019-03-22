@@ -51,13 +51,14 @@ def register(request):
     context_dict = {}
     if request.method == 'POST':
         # custom check to see if password is invalid
-        if len(request.POST.get("password")) < 6:
+        if len(request.POST.get("password")) < 6 or (not request.POST.get("username").isalnum()):
             user_form = UserForm()
             profile_form = UserProfileForm()
             context_dict["user_form"] = user_form
             context_dict["profile_form"] = profile_form
             context_dict["registered"] = registered
-            context_dict["password_short"] = True
+            context_dict["password_short"] = len(request.POST.get("password")) < 6
+            context_dict["invalid_username"] = (not request.POST.get("username").isalnum())
             return render(request, 'west_end_market/register.html', context_dict)
         # user form is username/email/password and profile form is the profile picture
         user_form = UserForm(data=request.POST)

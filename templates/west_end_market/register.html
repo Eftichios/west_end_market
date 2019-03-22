@@ -13,7 +13,11 @@
     </div>
 {% elif password_short %}
     <div class="alert alert-danger" role="alert">
-        <span>&#10008;Password must be at least 6 characters long!</span>
+        <span>&#10008;Password must be at least 6 characters long! Enter correct details and try again.</span>
+    </div>
+{% elif invalid_username %}
+    <div class="alert alert-danger" role="alert">
+        <span>&#10008;Username must consist of letters and numbers only! Enter correct details and try again.</span>
     </div>
 {% endif %}
                 <div>
@@ -51,7 +55,7 @@
                 <div class="form-group font-weight-bold">
                     <label>Username</label>
                     <input required id="id_username" type="text" class="form-control font-italic" placeholder="i.e JohnMathew" name="username">
-                    <p class="text-left helptext">Required. 25 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
+                    <p class="text-left helptext">Required. Letters and digits only.</p>
                 </div>
                 <div class="form-group font-weight-bold">
                     <label>Email address</label>
