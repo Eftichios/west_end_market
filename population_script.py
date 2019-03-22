@@ -185,7 +185,7 @@ def populate():
 
              {"id": "oth2",
                     "title": "tickets for Disney On Ice - Platinum 12 APR 2019",
-                    "description": "locks are in perfect condition",
+                    "description": "Not going due to injury.",
                     "price": 25,
                     "category": "other",
                     "user": "Maria",
@@ -258,7 +258,7 @@ def populate():
         profile.save()
         u.save()
 
-    # creates categories, listings and comments
+    # creates dummy categories, listings and comments
     for cat, cat_data in cats.items():
         c = add_category(cat, cat_data["total"])
         for l in cat_data["listings"]:

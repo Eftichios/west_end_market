@@ -12,6 +12,9 @@
             <h4>Found {{results|length}} results for "{{search}}":</h4>
             <hr>
         </div>
+        <div>
+            <button onclick="topFunction()" id="scrollBtn" title="Go to top"><strong>&#8593;</strong></button>
+        </div>
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort By: </a>
         <div class="dropdown-menu text-center-mobile" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{% url 'search_results' search 'price' %}">Price (Ascending)</a>
