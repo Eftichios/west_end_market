@@ -1,21 +1,29 @@
 import os
 from django.utils import timezone
 
-from west_end_market.models import Category, Listing, Comment, User
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'teamC_project.settings')
+
+import django
+django.setup()
+
+
+from west_end_market.models import Category, Listing, Comment, User, UserProfile
 
 
 def populate():
 
-    users = {"user_1": {"username": "JohnPope", "email": "JohnPope@email.com"},
-             "user_2": {"username": "ChristopherSmith", "email": "ChristopherSmith@email.com"},
-             "user_3": {"username": "PeterBrown", "email": "PeterBrown@email.com"},
-             "user_4": {"username": "James", "email": "James@email.com"},
-             "user_5": {"username": "Veronica", "email": "Veronica@email.com"},
-             "user_6": {"username": "Maria", "email": "Maria@email.com"},
-             "user_7": {"username": "Victor", "email": "Victor@email.com"},
-             "user_8": {"username": "Batman", "email": "Batman@email.com"},
-             "user_9": {"username": "userNoListings", "email": "userNoListings@email.com"}}
+    # dummy users
+    users = {"user_1": {"username": "JohnPope", "email": "JohnPope@email.com", "picture":"JohnPope/profile.jpg"},
+             "user_2": {"username": "ChristopherSmith", "email": "ChristopherSmith@email.com", "picture":"ChristopherSmith/profile.jpg"},
+             "user_3": {"username": "PeterBrown", "email": "PeterBrown@email.com", "picture":"PeterBrown/profile.jpg"},
+             "user_4": {"username": "James", "email": "James@email.com", "picture":"James/profile.jpg"},
+             "user_5": {"username": "Veronica", "email": "Veronica@email.com", "picture":"Veronica/profile.jpg"},
+             "user_6": {"username": "Maria", "email": "Maria@email.com", "picture":"Maria/profile.jpg"},
+             "user_7": {"username": "Victor", "email": "Victor@email.com", "picture":"Victor/profile.jpg"},
+             "user_8": {"username": "Batman", "email": "Batman@email.com", "picture": "Batman/profile.jpg"},
+             "user_9": {"username": "userNoListings", "email": "userNoListings@email.com", "picture": "UserNoListings/profile.jpg"}}
 
+    # dummy categories with listings
     school = [{"id": "sch1",
                      "title": "Introduction to Linear Algebra",
                      "description": "Used book but in very good condition",
@@ -166,35 +174,7 @@ def populate():
                      "picture": "JohnPope/bench.jpg",
                      "postcode": "PC SPO3"}]
 
-    other = [{"id": "oth1",
-                    "title": "Acoustic guitar",
-                    "description": "Bought it a couple of weeks ago to learn but I gave up",
-                    "price": 50,
-                    "category": "other",
-                    "user": "Victor",
-                    "date": timezone.now(),
-                    "picture": "Victor/guitar.jpg",
-                    "postcode": "PC OTH1"},
-
-             {"id": "oth2",
-                    "title": "tickets for Disney On Ice - Platinum 12 APR 2019",
-                    "description": "locks are in perfect condition",
-                    "price": 25,
-                    "category": "other",
-                    "user": "Maria",
-                    "date": timezone.now(),
-                    "picture": "Maria/disney.jpg",
-                    "postcode": "PC OTH2"},
-
-             {"id": "oth3",
-                    "title": "Limited Edition Brown Suede-look Crosley Record / Vinyl Player",
-                    "description": "In excelent condition and in fully working order, however the needle may need changing soon as it sometimes struggles with older records",
-                    "price": 40,
-                    "category": "other",
-                    "user": "ChristopherSmith",
-                    "date": timezone.now(),
-                    "picture": "ChristopherSmith/vinyl.jpg",
-                    "postcode": "PC OTH3"}]
+    other = []
 
     cats = {"school": {"listings": school, "total": len(school)},
             "electronics": {"listings": electronics, "total": len(electronics)},
@@ -203,6 +183,7 @@ def populate():
             "sports": {"listings": sports, "total": len(sports)},
             "other": {"listings": other, "total": len(other)}}
 
+    # dummy comments
     comments = {"sch1": [{"comment": "I am interested!", "user": "Maria"},
                          {"comment": "Hey Maria, you can send me an email so we can discuss the details", "user": "JohnPope"}],
                 "sch2": [{"comment": "Just send you an email", "user": "Veronica"},
@@ -232,19 +213,19 @@ def populate():
                 "spo2": [{"comment": "Comment on sports item 2", "user": "Victor"},
                          {"comment": "Another comment on sports item 2", "user": "Batman"}],
                 "spo3": [{"comment": "Comment on sports item 3", "user": "JohnPope"},
-                         {"comment": "Another comment on sports item 3", "user": "ChristopherSmith"}],
-                "oth1": [{"comment": "Comment on others item 1", "user": "PeterBrown"},
-                         {"comment": "Another comment on others item 1", "user": "James"}],
-                "oth2": [{"comment": "Comment on others item 2", "user": "Veronica"},
-                         {"comment": "Another comment on others item 2", "user": "Maria"}],
-                "oth3": [{"comment": "Comment on others item 3", "user": "Victor"},
-                         {"comment": "Another comment on others item 3", "user": "Batman"}]
+                         {"comment": "Another comment on sports item 3", "user": "ChristopherSmith"}]
                 }
 
+    # creates dummy users
     for user, user_data in users.items():
         u = User.objects.get_or_create(username=user_data["username"], email=user_data["email"])[0]
+        # all dummy users will have the same password for testing
+        profile = UserProfile.objects.get_or_create(user=u, picture=user_data["picture"])[0]
+        u.set_password("test123")
+        profile.save()
         u.save()
 
+    # creates categories, listings and comments
     for cat, cat_data in cats.items():
         c = add_category(cat, cat_data["total"])
         for l in cat_data["listings"]:
@@ -255,9 +236,10 @@ def populate():
                     u = User.objects.get(username=com["user"])
                     add_comment(com["comment"], u, a)
 
-    #for c in Category.objects.all():
-        #for l in Listing.objects.filter(category=c):
-            #print("- {0} - {1}".format(str(c), str(l)))
+    # prints to the console the listings that were created
+##    for c in Category.objects.all():
+##        for l in Listing.objects.filter(category=c):
+##            print("- {0} - {1}".format(str(c), str(l)))
 
 
 def add_category(name, listings):
